@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.anrongtec.lasa.ui.CheckQueryActivity">
+    <RelativeLayout
+        android:id="@+id/rl_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数据记录:"
+            android:textSize="18sp"
+            android:textColor="@color/bar_grey"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@+id/tb"/>
+        <ToggleButton
+            android:layout_alignParentRight="true"
+            android:id="@+id/tb"
+            android:background="@drawable/but_check_shape"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/rl_one"
+        android:id="@+id/rv_control_checkquery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp_8" />
+</RelativeLayout>

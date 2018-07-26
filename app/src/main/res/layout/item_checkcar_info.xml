@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/iv_detail_person_photo"
+        android:layout_width="48dp"
+        android:layout_height="72dp"
+        android:contentDescription="@string/person_photo"
+        android:paddingEnd="@dimen/dp_4"
+        android:paddingStart="@dimen/dp_4"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/car_id"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/car_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:text="@string/person_info_name"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBottom_toTopOf="@id/person_infoSource"
+        app:layout_constraintLeft_toRightOf="@id/iv_detail_person_photo"
+        app:layout_constraintTop_toTopOf="@id/iv_detail_person_photo"
+        app:layout_goneMarginStart="@dimen/dp_4" />
+
+    <TextView
+        android:id="@+id/person_nameIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:text="崔华"
+        android:textColor="@color/text_95_black"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBaseline_toBaselineOf="@id/car_id"
+        app:layout_constraintLeft_toRightOf="@id/car_id"
+        app:layout_constraintTop_toTopOf="@id/car_id" />
+
+    <TextView
+        android:id="@+id/person_idCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="@string/person_info_id"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBaseline_toBaselineOf="@id/car_id"
+        app:layout_constraintLeft_toRightOf="@id/person_nameIn"
+        app:layout_constraintRight_toLeftOf="@id/person_idCardIn"
+        app:layout_constraintTop_toTopOf="@id/car_id" />
+
+    <TextView
+        android:id="@+id/person_idCardIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:text="123456789098765432"
+        android:maxLength="18"
+        android:textColor="@color/text_95_black"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBaseline_toBaselineOf="@id/car_id"
+        app:layout_constraintLeft_toRightOf="@id/person_idCard"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/car_id" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/person_gender"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/dp_8"-->
+        <!--android:text="@string/person_info_gender"-->
+        <!--app:layout_constraintLeft_toRightOf="@id/person_idCardIn"-->
+        <!--app:layout_constraintRight_toLeftOf="@id/person_genderIn"-->
+        <!--app:layout_constraintTop_toTopOf="@id/person_name" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/person_genderIn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/dp_4"-->
+        <!--android:text="男"-->
+        <!--android:layout_marginEnd="@dimen/dp_8"-->
+        <!--android:textColor="@color/text_95_black"-->
+        <!--android:textSize="@dimen/sp_14"-->
+        <!--app:layout_constraintBaseline_toBaselineOf="@id/person_name"-->
+        <!--app:layout_constraintLeft_toRightOf="@id/person_gender"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@id/person_name" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/person_mz"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/dp_8dp"-->
+        <!--android:text="@string/person_info_ethnic"-->
+        <!--app:layout_constraintBaseline_toBaselineOf="@id/person_name"-->
+        <!--app:layout_constraintLeft_toRightOf="@id/person_genderIn"-->
+        <!--app:layout_constraintRight_toLeftOf="@id/person_mzIn"-->
+        <!--app:layout_constraintTop_toTopOf="@id/person_name" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/person_mzIn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/dp_4"-->
+        <!--android:paddingEnd="@dimen/dp_4"-->
+        <!--android:text="汉族"-->
+        <!--android:textColor="@color/text_95_black"-->
+        <!--android:textSize="@dimen/sp_14"-->
+        <!--app:layout_constraintBaseline_toBaselineOf="@id/person_name"-->
+        <!--app:layout_constraintLeft_toRightOf="@id/person_mz"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@id/person_name" />-->
+
+    <TextView
+        android:id="@+id/person_infoSource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/car_plate_number"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBottom_toTopOf="@id/person_link"
+        app:layout_constraintLeft_toLeftOf="@id/car_id"
+        app:layout_constraintLeft_toRightOf="@id/iv_detail_person_photo"
+        app:layout_constraintTop_toBottomOf="@id/car_id"
+        app:layout_goneMarginStart="@dimen/dp_4" />
+
+    <TextView
+        android:id="@+id/person_infoSourceIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:text="市公安厅"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_infoSource"
+        app:layout_constraintLeft_toRightOf="@id/person_infoSource"
+        app:layout_constraintRight_toLeftOf="@id/person_type"
+        app:layout_constraintTop_toTopOf="@id/person_infoSource" />
+
+    <TextView
+        android:id="@+id/person_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="@string/car_type"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_infoSource"
+        app:layout_constraintLeft_toRightOf="@id/person_infoSourceIn"
+        app:layout_constraintTop_toBottomOf="@id/car_id" />
+
+    <TextView
+        android:id="@+id/person_typeIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:text="违停"
+        android:textColor="@color/text_95_black"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_infoSource"
+        app:layout_constraintLeft_toRightOf="@id/person_type"
+        app:layout_constraintRight_toLeftOf="@id/person_level"
+        app:layout_constraintTop_toTopOf="@id/person_infoSource" />
+    <TextView
+        android:id="@+id/person_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="@string/car_color"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_infoSource"
+        app:layout_constraintLeft_toRightOf="@id/person_typeIn"
+        app:layout_constraintTop_toBottomOf="@id/car_id" />
+
+    <TextView
+        android:id="@+id/person_levelIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:text="高级"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:textColor="@color/text_95_black"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_infoSource"
+        app:layout_constraintLeft_toRightOf="@id/person_level"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/person_infoSource" />
+
+
+    <TextView
+        android:id="@+id/person_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/control_linkPerson"
+        app:layout_constraintBottom_toBottomOf="@id/iv_detail_person_photo"
+        app:layout_constraintLeft_toLeftOf="@id/car_id"
+        app:layout_constraintLeft_toRightOf="@id/iv_detail_person_photo"
+        app:layout_constraintTop_toBottomOf="@id/person_infoSource" />
+
+    <TextView
+        android:id="@+id/person_linkIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_4"
+        android:text="警察"
+        android:textColor="@color/text_95_black"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_link"
+        app:layout_constraintLeft_toRightOf="@id/person_link"
+        app:layout_constraintTop_toBottomOf="@id/person_infoSource" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/person_dealType"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/dp_8"-->
+        <!--android:text="@string/person_dealType"-->
+        <!--android:textSize="@dimen/sp_12"-->
+        <!--app:layout_constraintBaseline_toBaselineOf="@id/person_link"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toRightOf="@id/person_linkIn"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/person_infoSource" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/person_dealTypeIn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="@dimen/dp_4"-->
+        <!--android:text="逮捕"-->
+        <!--android:textColor="@color/text_95_black"-->
+        <!--android:textSize="@dimen/sp_14"-->
+        <!--app:layout_constraintBaseline_toBaselineOf="@id/person_link"-->
+        <!--app:layout_constraintLeft_toRightOf="@id/person_dealType"-->
+        <!--app:layout_constraintTop_toTopOf="@id/person_link" />-->
+
+    <TextView
+        android:id="@+id/person_linkPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="@string/control_linkPhone"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_link"
+        app:layout_constraintLeft_toRightOf="@id/person_linkIn"
+        app:layout_constraintTop_toBottomOf="@id/person_infoSource" />
+
+    <TextView
+        android:id="@+id/person_linkPhoneIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:text="18247171245"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_link"
+        app:layout_constraintLeft_toRightOf="@id/person_linkPhone"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

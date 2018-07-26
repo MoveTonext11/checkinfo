@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">信息核查</string>
+
+    <!--  标题  -->
+    <string name="title_activity_mainIndex">核查核录平台客户端</string>
+    <string name="title_activity_login">核录</string>
+    <string name="title_activity_main">核查</string>
+    <string name="title_activity_check_info">信息核查</string>
+    <string name="title_activity_control">布控操作</string>
+    <string name="title_activity_person_avatar">人像比对</string>
+    <string name="title_activity_count_analyze">统计分析</string>
+    <string name="title_activity_person_list">核查结果</string>
+    <string name="title_activity_person_details">人员详情</string>
+
+    <!--  主页面模块名  -->
+    <string name="main_function_info_check">信息核查</string>
+    <string name="main_function_control">紧急列控</string>
+    <string name="main_function_check_record">核查记录</string>
+    <string name="main_function_count_analyze">统计分析</string>
+    <string name="main_function_anjian">快速安检</string>
+    <string name="main_function_person_join">人证合一</string>
+    <!--核查信息导航名-->
+    <string name="main_check_person_navigation">人员核查</string>
+    <string name="main_check_car_navigation">车辆核查</string>
+    <!--核查记录导航-->
+    <string name="check_personRecord">人员核查记录</string>
+    <string name="check_carRecord">车辆核查记录</string>
+    <!--布控操作导航名-->
+    <string name="main_control_apply_navigation">列控申请</string>
+    <string name="main_control_cancel_navigation">布控撤控</string>
+    <string name="control_cancel">撤控</string>
+    <string name="main_control_query_navigation">列控查询</string>
+    <string name="query_type">布控查询方式</string>
+    <string name="queryPerson">人员列控人查询</string>
+    <string name="queryCar">车辆列控人查询</string>
+    <string name="main_control_person">人员列控</string>
+    <string name="main_control_car">车辆列控</string>
+
+    <!--车辆-->
+    <string name="car_plate_number">普通车牌号</string>
+    <string name="newCar_plate_number">新能源车牌号</string>
+    <string name="car_owners_idCard">车主身份证号</string>
+    <string name="car_identify_code">车辆识别代码</string>
+    <string name="car_owners_name">车主姓名</string>
+    <string name="car_owners_gender">车主性别</string>
+    <string name="car_engine_code">发动机号</string>
+    <string name="car_color">车辆颜色</string>
+    <string name="car_dealType">处置方式</string>
+    <string name="car_type">车辆类别</string>
+    <string name="car_plate_type">号牌种类</string>
+    <string name="car_checked_description">中标车辆描述</string>
+    <string name="car_checkTime">车辆核查时间</string>
+
+
+    <!--警员-->
+    <string name="policeNum">警员号</string>
+    <string name="policeName">警员名称</string>
+    <string name="police_dept">布控单位</string>
+    <string name="police_pointName">所属机构</string>
+
+
+    <!--布控人-->
+    <string name="control_linkPerson">联系人</string>
+    <string name="control_linkPhone">联系电话</string>
+    <string name="control_remark">描述</string>
+    <string name="control_linkPerson_id">布控联系人身份证号</string>
+    <string name="cancel_person">撤控人</string>
+    <string name="cancel_remark">撤控理由</string>
+
+    <!--  人员信息  -->
+    <string name="person_info_name">姓名</string>
+    <string name="person_info_gender">性别</string>
+    <string name="person_info_id">身份证号</string>
+    <string name="person_info_ethnic">民族</string>
+    <string name="person_info_birthday">出生日期</string>
+    <string name="person_info_address">住址</string>
+    <string name="person_info_age">年龄</string>
+    <string name="person_info_height">身高</string>
+    <string name="person_info_homeNum">户号</string>
+    <string name="person_info_serviceAddress">服务处所</string>
+    <string name="person_info_marryState">婚姻状况</string>
+    <string name="person_info_permanentAddress">户籍地址</string>
+    <string name="person_info_education">文化程度</string>
+    <string name="person_info_profession">户籍地址</string>
+    <string name="person_info_authority">签发机关</string>
+    <string name="person_info_validityDate">有效期</string>
+    <string name="person_info_similarity">相似度</string>
+    <string name="person_taskName">任务名称</string>
+    <string name="person_info_source">数据来源</string>
+    <string name="person_info_checkPoint">检查站名称</string>
+    <string name="person_type">人员类别</string>
+    <string name="person_controlReason">布控原因</string>
+    <string name="person_Level">人员级别</string>
+    <string name="person_dealType">处置方式</string>
+    <string name="person_jyaq">简要案情</string>
+    <string name="person_checkTime">人员核查时间</string>
+    <string name="person_photo">人员头像</string>
+
+    <string name="edit_hint_inputName">请输入姓名</string>
+    <string name="emptyMessage">暂时没有数据</string>
+    <string name="btn_submitSelect">查询</string>
+
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--人员核查*******人员基本信息-->
+        <include
+            layout="@layout/item_detail_info_person_info" />
+        <!--人员核查*******中标人员信息-->
+        <include
+            layout="@layout/item_detail_info_person_bid_info" />
+        <!--车辆核查*******车辆基本信息-->
+        <include
+            layout="@layout/item_detail_info_car_info" />
+        <!--车辆核查*******车辆中标信息-->
+        <include
+            layout="@layout/item_detail_info_car_bid_info" />
+    </LinearLayout>
+</ScrollView>

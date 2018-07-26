@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.anrongtec.lasa.ui.CountAnalyzeActivity">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/llc_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_day"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_4"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_count"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="每日"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_week"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_4"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_count"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="每周"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_month"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_4"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_count"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="每月"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_year"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_4"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_count"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="每年"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_highQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_4"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_count"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="高级查询"
+            android:textColor="@color/white" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/rl_cars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        app:layout_constraintTop_toBottomOf="@id/llc_buttons">
+
+        <TextView
+            android:id="@+id/tv_count_cars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tv_count_car_style"
+            android:ems="1"
+            android:text="车辆统计"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/car_top_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@android:color/holo_orange_dark"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_cars"
+            app:layout_constraintTop_toTopOf="@id/tv_count_cars" />
+
+        <TextView
+            android:id="@+id/tv_count_carsTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="核查车辆数："
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_count_isCarsTotalIn"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_cars"
+            app:layout_constraintTop_toTopOf="@id/tv_count_cars" />
+
+        <TextView
+            android:id="@+id/tv_count_carsTotalIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="345"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_count_isCarsTotalIn"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_carsTotal"
+            app:layout_constraintTop_toTopOf="@id/tv_count_cars" />
+
+        <TextView
+            android:id="@+id/tv_count_isCarsTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中标车辆数："
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_cars"
+            app:layout_constraintLeft_toLeftOf="@id/tv_count_carsTotal"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_cars"
+            app:layout_constraintTop_toBottomOf="@id/tv_count_carsTotalIn" />
+
+        <TextView
+            android:id="@+id/tv_count_isCarsTotalIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_cars"
+            app:layout_constraintLeft_toLeftOf="@id/tv_count_carsTotalIn"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_isCarsTotal"
+            app:layout_constraintTop_toBottomOf="@id/tv_count_carsTotalIn" />
+
+        <TextView
+            android:id="@+id/car_bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@android:color/holo_orange_dark"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_cars"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_cars" />
+
+        <TextView
+            android:id="@+id/car_right_line"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@android:color/holo_orange_dark"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_cars"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_count_cars" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/count_divider"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="4dp"-->
+            <!--android:layout_marginStart="@dimen/dp_8"-->
+            <!--android:layout_marginTop="@dimen/dp_8"-->
+            <!--android:background="@drawable/btn_blue_bg"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/tv_count_cars" />-->
+
+        <TextView
+            android:id="@+id/tv_count_persons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/tv_count_person_style"
+            android:ems="1"
+            android:text="人员统计"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/car_bottom_line" />
+
+        <TextView
+            android:id="@+id/person_top_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@android:color/holo_red_light"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_persons"
+            app:layout_constraintTop_toTopOf="@id/tv_count_persons" />
+
+        <TextView
+            android:id="@+id/tv_count_personsTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="核查人员数："
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_count_isPersonsTotalIn"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_persons"
+            app:layout_constraintTop_toTopOf="@id/tv_count_persons" />
+
+        <TextView
+            android:id="@+id/tv_count_personsTotalIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="567"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tv_count_isPersonsTotalIn"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_personsTotal"
+            app:layout_constraintTop_toTopOf="@id/tv_count_persons" />
+
+        <TextView
+            android:id="@+id/tv_count_isPersonsTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中标人员数："
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_persons"
+            app:layout_constraintLeft_toLeftOf="@id/tv_count_personsTotal"
+            app:layout_constraintTop_toBottomOf="@id/tv_count_personsTotal" />
+
+        <TextView
+            android:id="@+id/tv_count_isPersonsTotalIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="987"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_persons"
+            app:layout_constraintLeft_toLeftOf="@id/tv_count_personsTotalIn"
+            app:layout_constraintTop_toBottomOf="@id/tv_count_personsTotal" />
+
+        <TextView
+            android:id="@+id/person_bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@android:color/holo_red_light"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_persons"
+            app:layout_constraintLeft_toRightOf="@id/tv_count_persons" />
+
+        <TextView
+            android:id="@+id/person_right_line"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@android:color/holo_red_light"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count_persons"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_count_persons" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

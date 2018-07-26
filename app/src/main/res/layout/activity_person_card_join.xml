@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.anrongtec.lasa.ui.PersonCardJoinActivity">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/llc_scanImage"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="vertical"
+        app:layout_constraintDimensionRatio="2:3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/llc_addImage"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="证件照"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/iv_scan_IDCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_16"
+            android:src="@drawable/scan_idcard" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/llc_addImage"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintDimensionRatio="2:3"
+        app:layout_constraintLeft_toRightOf="@id/llc_scanImage"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/llc_scanImage">
+
+        <TextView
+            android:id="@+id/tv_nowCamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="现场照"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_add_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_16"
+            android:src="@drawable/add_image" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <Button
+        android:id="@+id/btn_comp"
+        style="@style/button_submit"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="验证"
+        app:layout_constraintTop_toBottomOf="@id/llc_addImage" />
+
+    <TextView
+        android:id="@+id/divider_personCard"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/btn_comp" />
+
+    <TextView
+        android:id="@+id/tv_resultData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="该功能后续更新"
+        app:layout_constraintTop_toBottomOf="@id/divider_personCard" />
+
+</android.support.constraint.ConstraintLayout>

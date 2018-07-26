@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?><!--人员核查*******中标人员信息-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_detail_person_bid_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_8"
+    android:layout_marginTop="8dp"
+    android:background="@color/white"
+    android:padding="10dp"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/iv_detail_person_bid_square"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blue_dot_shape" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/iv_detail_person_bid_square"
+        android:text="中标人信息" />
+
+    <View
+        android:id="@+id/divider_lineTwo"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/iv_detail_person_bid_square"
+        android:background="@drawable/divider_with_padding" />
+
+    <!--中标人员信息展示-->
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_type"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_lineTwo"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_type"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_TypeIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_lineTwo"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_bid_type"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_level"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_type"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_Level"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_levelIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_type"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_bid_level"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_dealType"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_level"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_dealType"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_dealTypeIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_level"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_bid_dealType"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_remark"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_dealType"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_controlReason"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_remarkIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_dealType"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_bid_remark"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_link"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_remark"
+        android:layout_marginTop="10dp"
+        android:text="@string/control_linkPerson"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_linkIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_remark"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_bid_link"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_linkPhone"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_link"
+        android:layout_marginTop="10dp"
+        android:text="@string/control_linkPhone"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_bid_linkPhoneIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_link"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_bid_linkPhone"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_bid_Dept"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_linkPhone"
+        android:layout_marginTop="10dp"
+        android:text="@string/police_dept"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_bid_linkDeptIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_bid_linkPhone"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_bid_Dept"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+</RelativeLayout>

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?><!--人员核查*******人员基本信息-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_detail_person_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_8"
+    android:layout_marginTop="8dp"
+    android:background="@color/white"
+    android:padding="10dp"
+    android:visibility="gone">
+
+    <ImageView
+        android:id="@+id/iv_detail_person_square"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/blue_dot_shape" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/iv_detail_person_square"
+        android:text="人员信息" />
+
+    <View
+        android:id="@+id/divider_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/iv_detail_person_square"
+        android:background="@drawable/divider_with_padding" />
+    <!--人员基本信息展示-->
+    <TextView
+        android:id="@+id/tv_detail_person_info_name"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_line"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_name"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_nameIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_line"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_name"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_idCard"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_name"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_id"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_idCardIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_name"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_idCard"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_gender"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_idCard"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_gender"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_genderIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_idCard"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_gender"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_nation"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_gender"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_ethnic"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_nationIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_gender"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_nation"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_birthday"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_nation"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_birthday"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_birthdayIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_nation"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_birthday"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_organ"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_birthday"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_authority"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_organIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_birthday"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_organ"
+        android:text="北京市公安局"
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_time"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_organ"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_validityDate"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_timeIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_organ"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_time"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_checkTime"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_time"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_checkTime"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_checkTimeIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_time"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_checkTime"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+    <!--数据来源-->
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_info_source"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_checkTime"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_source"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_sourceIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_checkTime"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_source"
+        android:text=""
+        android:visibility="gone"
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_policeNum"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_source"
+        android:layout_marginTop="10dp"
+        android:text="@string/policeNum"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_policeNumIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_source"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_policeNum"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+    <!--检查站名称-->
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_info_checkPoint"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_policeNum"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_checkPoint"
+        android:textSize="@dimen/sp_14" />
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_info_checkPointIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_policeNum"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_checkPoint"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+    <!--任务名称-->
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_info_taskName"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_checkPoint"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_taskName"
+        android:textSize="@dimen/sp_14" />
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_info_taskNameIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_checkPoint"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_taskName"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+    <!--简要案情-->
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_info_jyaq"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_taskName"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_jyaq"
+        android:textSize="@dimen/sp_14" />
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_detail_person_info_jyaqIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_taskName"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_jyaq"
+        android:text="高级"
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_address"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_jyaq"
+        android:layout_marginTop="10dp"
+        android:text="@string/person_info_address"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_addressIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_jyaq"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_address"
+        android:text="北京市"
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+    <TextView
+        android:id="@+id/tv_detail_person_info_locationX"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_address"
+        android:layout_marginTop="20dp"
+        android:text="X坐标"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_locationXIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_address"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_locationX"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+    <TextView
+        android:id="@+id/tv_detail_person_info_locationY"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_locationX"
+        android:layout_marginTop="10dp"
+        android:text="Y坐标"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_detail_person_info_locationYIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_person_info_locationX"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/tv_detail_person_info_locationY"
+        android:text=""
+        android:textColor="#000"
+        android:textSize="@dimen/sp_16" />
+
+    <ImageView
+        android:id="@+id/iv_detail_person_info_avatar"
+        android:layout_width="72dp"
+        android:layout_height="96dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/divider_line"
+        android:layout_marginTop="@dimen/dp_10"
+        android:scaleType="fitXY"
+        android:visibility="visible" />
+</RelativeLayout>

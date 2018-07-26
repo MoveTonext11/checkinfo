@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--  普通点击效果， 点击覆盖半透明白色  -->
+    <item android:state_pressed="true" android:drawable="@color/white_40"></item>
+    <item android:drawable="@android:color/transparent"></item>
+
+</selector>

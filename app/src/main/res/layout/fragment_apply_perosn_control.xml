@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.anrongtec.lasa.ui.fragment.ApplyPersonControlFragment">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sub"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin"
+            app:divider="@drawable/divider_with_padding"
+            app:showDividers="none">
+
+            <TextView
+                android:id="@+id/tv_apply_person_name"
+                android:layout_width="80dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="被列控人姓名"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_nameValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="被列控人姓名"
+                android:textColor="@color/black"
+                app:met_floatingLabelText="被列控人姓名" />
+
+            <TextView
+                android:id="@+id/tv_apply_person_sex"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_person_name"
+                android:layout_marginTop="8dp"
+                android:text="@string/person_info_gender"
+                android:textSize="@dimen/sp_14" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="男" />
+
+                <RadioButton
+                    android:id="@+id/rb_woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女" />
+
+            </RadioGroup>
+            <TextView
+                android:id="@+id/tv_apply_person_IDCard"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/person_info_id"
+                android:textSize="@dimen/sp_14" />
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.anrongtec.lasa.view.CustomKeyBoard
+                    android:id="@+id/et_apply_person_IDVCardIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:digits="0123456789xX"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="请输入身份证号码"
+                    android:textColor="@color/black"
+                    android:lines="1"
+                    android:maxLength="18"
+                    android:paddingLeft="8dp"
+                    android:text=""
+                    android:textSize="18sp"
+                    app:xml="@xml/idcard_keyboard" />
+
+                <ImageView
+                    android:id="@+id/iv_mc_scan"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="@dimen/dp_4"
+                    android:padding="@dimen/dp_4"
+                    android:baselineAlignBottom="true"
+                    android:src="@drawable/ic_check_scan" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <TextView
+                android:id="@+id/tv_apply_person_type"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/person_type"
+                android:textSize="@dimen/sp_14"/>
+
+            <TextView
+                android:id="@+id/et_apply_person_typeIn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:hint="@string/person_type" />
+
+
+            <TextView
+                android:id="@+id/tv_apply_person_address"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_person_type"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/person_info_address"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_addressIn"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/person_info_address"
+                app:met_floatingLabelText="@string/person_info_address" />
+
+            <TextView
+                android:id="@+id/tv_apply_person_jyaq"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_person_address"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="列控原因"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_jyaqIn"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="列控原因"
+                android:textColor="@color/black"
+                app:met_floatingLabelText="列控原因" />
+
+
+            <TextView
+                android:id="@+id/tv_apply_lkr"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_person_jyaq"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="列控人"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_lkrIn"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="列控人"
+                app:met_floatingLabelText="列控人" />
+
+            <TextView
+                android:id="@+id/tv_apply_lkrPhone"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_lxr"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="列控人电话"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_lkrPhoneIn"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="列控人电话"
+                android:inputType="phone"
+                app:met_floatingLabelText="列控人电话" />
+
+
+            <TextView
+                android:id="@+id/tv_apply_lxr"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_lkrPhone"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="管辖民警"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_lxrIn"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="管辖民警"
+                android:textColor="@color/black"
+                app:met_floatingLabelText="管辖民警" />
+
+            <TextView
+                android:id="@+id/tv_apply_lxrPhone"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_lxr"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="管辖民警电话"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_lxrPhoneIn"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="管辖民警电话"
+                android:textColor="@color/black"
+                android:inputType="phone"
+                app:met_floatingLabelText="管辖民警电话" />
+
+
+            <TextView
+                android:id="@+id/tv_apply_lxrMark"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_apply_lxrPhone"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/control_remark"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_apply_person_lxrMarkIn"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/control_remark"
+                app:met_floatingLabelText="@string/control_remark" />
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_sub"
+        style="@style/button_submit"
+        android:gravity="center"
+        android:text="确定"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scroll" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--人员基本信息-->
+    <RelativeLayout
+        android:id="@+id/rl_title_personInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_mc_square_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blue_dot_shape" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/iv_mc_square_per"
+            android:text="布控人员信息" />
+
+        <!--</RelativeLayout>-->
+
+        <View
+            android:id="@+id/divider_line_per"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/iv_mc_square_per"
+            android:background="@drawable/divider_with_padding" />
+
+        <!--信息展示页面-->
+        <TextView
+            android:id="@+id/tv_carInfo_ownName_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider_line_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_info_name"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownNameIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider_line_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_ownName_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerCard_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownName_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_info_id"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerCardIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownName_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_ownerCard_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerGender_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerCard_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_info_gender"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerGenderIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerCard_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_ownerGender_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_num_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerGender_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_type"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_numIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerGender_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_num_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_mc_info_address_per"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_carInfo_num_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_info_address"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_mc_info_addressIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_carInfo_num_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_mc_info_address_per"
+            android:text="T78797876"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/divider_line_per"
+            android:layout_marginTop="@dimen/dp_10"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+    <!--人员被布控信息-->
+    <RelativeLayout
+        android:id="@+id/rl_title_personControlInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_control_square_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blue_dot_shape" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/iv_control_square_per"
+            android:text="布控信息" />
+
+        <View
+            android:id="@+id/divider_controlLine_per"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/iv_control_square_per"
+            android:background="@drawable/divider_with_padding" />
+        <!--展示人员被布控信息-->
+
+        <TextView
+            android:id="@+id/tv_carInfo_carType_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_controlLine_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_type"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_carTypeIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_controlLine_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_carType_per"
+            android:text="违停"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_dataSource_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_carType_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_info_source"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_dataSourceIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_carType_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_dataSource_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_dealType_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dataSource_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_dealType"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_dealTypeIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dataSource_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_dealType_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_linkPerson_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dealType_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/control_linkPerson"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_linkPersonIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dealType_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_linkPerson_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_linkPersonPhone_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_linkPerson_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/control_linkPhone"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_linkPersonPhoneIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_linkPerson_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_linkPersonPhone_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_carDesc_per"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_linkPersonPhone_per"
+            android:layout_marginTop="10dp"
+            android:text="@string/control_remark"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_carDescIn_per"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_linkPersonPhone_per"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_carDesc_per"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+    </RelativeLayout>
+
+    <!--车辆基本信息-->
+    <RelativeLayout
+        android:id="@+id/rl_title_carInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_mc_square"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blue_dot_shape" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/iv_mc_square"
+            android:text="布控车辆信息" />
+
+        <!--</RelativeLayout>-->
+
+        <View
+            android:id="@+id/divider_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/iv_mc_square"
+            android:background="@drawable/divider_with_padding" />
+
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/rl_mc_info"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/white"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingRight="16dp">-->
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownName"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider_line"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_owners_name"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownNameIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider_line"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_ownName"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerCard"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownName"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_owners_idCard"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerCardIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownName"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_ownerCard"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerGender"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerCard"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_owners_gender"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_ownerGenderIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerCard"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_ownerGender"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_num"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerGender"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_plate_number"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_numIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_ownerGender"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_num"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_plateType"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_carInfo_num"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_plate_type"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_plateTypeIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_carInfo_num"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_plateType"
+            android:text="A级"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_identifyCode"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_carInfo_plateType"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_identify_code"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_identifyCodeIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_carInfo_plateType"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_detail_car_identifyCode"
+            android:text="2000-05-05"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_carColor"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_detail_car_identifyCode"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_color"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_carColorIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_detail_car_identifyCode"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_detail_car_carColor"
+            android:text="黑色"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_engineNum"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_detail_car_carColor"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_engine_code"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_engineNumIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_detail_car_carColor"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_detail_car_engineNum"
+            android:text="T78797876"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_mc_info_address"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_detail_car_engineNum"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_info_address"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_mc_info_addressIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_detail_car_engineNum"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_mc_info_address"
+            android:text="北京市某某小区北京市某某小区北京市某某小区北京市某某小区"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/divider_line"
+            android:layout_marginTop="@dimen/dp_10"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+    <!--车辆被布控信息-->
+    <RelativeLayout
+        android:id="@+id/rl_title_carControlInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_control_square"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blue_dot_shape" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/iv_control_square"
+            android:text="布控信息" />
+
+        <View
+            android:id="@+id/divider_controlLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/iv_control_square"
+            android:background="@drawable/divider_with_padding" />
+        <!--展示被布控信息-->
+
+        <TextView
+            android:id="@+id/tv_carInfo_carType"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_controlLine"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_type"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_carInfo_carTypeIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_controlLine"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_carInfo_carType"
+            android:text="违停"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_dataSource"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_carType"
+            android:layout_marginTop="10dp"
+            android:text="@string/person_info_source"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_dataSourceIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_carInfo_carType"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_dataSource"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_dealType"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dataSource"
+            android:layout_marginTop="10dp"
+            android:text="@string/car_dealType"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_dealTypeIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dataSource"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_dealType"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_bid_linkPerson"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dealType"
+            android:layout_marginTop="10dp"
+            android:text="@string/control_linkPerson"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_linkPersonIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_control_dealType"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_detail_car_bid_linkPerson"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_detail_car_bid_linkPhone"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_detail_car_bid_linkPerson"
+            android:layout_marginTop="10dp"
+            android:text="@string/control_linkPhone"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_linkPersonPhoneIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_detail_car_bid_linkPerson"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_detail_car_bid_linkPhone"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_control_carDesc"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_detail_car_bid_linkPhone"
+            android:layout_marginTop="10dp"
+            android:text="@string/control_remark"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_control_carDescIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_detail_car_bid_linkPhone"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tv_control_carDesc"
+            android:text="767"
+            android:textColor="#000"
+            android:textSize="@dimen/sp_16" />
+
+    </RelativeLayout>
+</LinearLayout>

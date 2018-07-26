@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:background="@color/white"
+            android:paddingBottom="8dp"
+            android:paddingLeft="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_8"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_sfzid"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:gravity="center"
+                android:text="@string/car_plate_number" />
+
+            <com.carkeyboard.view.InputView
+                android:id="@+id/inputView"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_48"
+                android:layout_toEndOf="@id/tv_sfzid"
+                android:background="@android:drawable/editbox_background_normal"
+                android:text=""
+                android:textSize="12sp"
+                app:pwkInputTextSize="22sp" />
+
+            <Button
+                android:id="@+id/lock_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/inputView"
+                android:text="@string/pwk_change_to_energy" />
+
+            <ImageView
+                android:id="@+id/iv_mc_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/ic_check_scan" />
+
+            <TextView
+                android:id="@+id/tv_check_carPlateType"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/lock_type"
+                android:gravity="center"
+                android:text="@string/car_plate_type" />
+
+            <TextView
+                android:id="@+id/tv_check_carPlateTypeValue"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@id/lock_type"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_toEndOf="@id/tv_check_carPlateType"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center_vertical"
+                android:text="请选择号牌种类"
+                android:textColor="@color/text_95_black"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_submitSelect"
+                style="@style/button_submit"
+                android:layout_below="@id/tv_check_carPlateTypeValue"
+                android:layout_margin="@dimen/dp_8"
+                android:text="@string/btn_submitSelect" />
+        </RelativeLayout>
+
+        <!--<include layout="@layout/activity_detail_info" />-->
+
+        <!--车辆核查*******车辆基本信息-->
+        <include layout="@layout/item_detail_info_car_info" />
+        <!--车辆核查*******车辆中标信息-->
+        <include layout="@layout/item_detail_info_car_bid_info" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</ScrollView>

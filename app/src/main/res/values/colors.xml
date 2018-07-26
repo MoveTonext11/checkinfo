@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff4289E4</color>
+    <color name="colorPrimaryDark">#ff4289E4</color>
+    <color name="colorAccent">#ff4289E4</color>
+    <color name="background">#ffeeeeee</color>
+
+    <!-- 分割线 -->
+    <color name="divider">#ffd9d9d9</color>
+
+    <!--  文字颜色  -->
+    <color name="text_black">#ff4a4a4a</color>
+    <color name="text_95_black">#F2000000</color>
+    <!--相似度颜色-->
+    <color name="text_similarity_green">#25D825</color>
+    <!--个人详细信息图片背景-->
+    <color name="detail_photo_bg">#D7EBFE</color>
+
+
+    <!--  白色  -->
+    <color name="white">#ffffffff</color>
+    <color name="color_text_gray">#999999</color>
+    <!--  40透明度白色  -->
+    <color name="white_40">#40ffffff</color>
+
+    <color name="bg_checked">#F0E68C</color>
+
+    <!--  登录页面  -->
+    <color name="login_bg_top">#ff5b9ae9</color>
+    <color name="login_bg_bottom">#ff3b82dd</color>
+
+</resources>

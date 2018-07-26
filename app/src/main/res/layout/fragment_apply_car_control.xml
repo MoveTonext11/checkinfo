@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sub"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_carControl_PlateNum"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:text="@string/car_plate_number"
+                android:textSize="@dimen/sp_14" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.carkeyboard.view.InputView
+                    android:id="@+id/et_carControl_PlateNumValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dp_48"
+                    android:layout_toEndOf="@id/tv_carNum"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:text=""
+                    android:textSize="12sp"
+                    app:pwkInputTextSize="22sp" />
+                <ImageView
+                    android:id="@+id/iv_car_scan"
+                    android:layout_width="40dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/ic_check_scan" />
+
+                <Button
+                    android:id="@+id/btn_lock_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_carControl_PlateNumValue"
+                    android:text="@string/pwk_change_to_energy" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_carControl_personID"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_PlateNum"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/car_owners_idCard"
+                android:textSize="@dimen/sp_14" />
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.anrongtec.lasa.view.CustomKeyBoard
+                    android:id="@+id/et_carControl_personIDValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:digits="0123456789xX"
+                    android:gravity="center_vertical"
+                    android:hint="请输入车主身份证号码"
+                    android:lines="1"
+                    android:maxLength="18"
+                    android:paddingLeft="8dp"
+                    android:text=""
+                    android:textColor="@color/text_95_black"
+                    android:textSize="18sp"
+                    app:xml="@xml/idcard_keyboard" />
+
+                <ImageView
+                    android:id="@+id/iv_mc_scan"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="@dimen/dp_4"
+                    android:baselineAlignBottom="true"
+                    android:padding="@dimen/dp_4"
+                    android:src="@drawable/ic_check_scan" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_carControl_identifyCode"-->
+            <!--android:layout_width="88dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tv_carControl_personID"-->
+            <!--android:layout_marginTop="@dimen/dp_16"-->
+            <!--android:text="@string/car_identify_code"-->
+            <!--android:textSize="@dimen/sp_14"-->
+            <!--android:visibility="gone" />-->
+
+            <!--<com.rengwuxian.materialedittext.MaterialEditText-->
+            <!--android:id="@+id/et_carControl_identifyCodeValue"-->
+            <!--style="@style/material_edittext"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/car_identify_code"-->
+            <!--app:met_floatingLabelText="@string/car_identify_code" />-->
+
+            <TextView
+                android:id="@+id/tv_carControl_ownerName"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_personID"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/car_owners_name"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_ownerNameValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/car_owners_name"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:met_floatingLabelText="@string/car_owners_name" />
+
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_carControl_carEngineName"-->
+            <!--android:layout_width="88dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tv_carControl_ownerName"-->
+            <!--android:layout_marginStart="@dimen/dp_8"-->
+            <!--android:layout_marginTop="@dimen/dp_16"-->
+            <!--android:text="@string/car_engine_code"-->
+            <!--android:textSize="@dimen/sp_14"-->
+            <!--android:visibility="gone" />-->
+
+            <!--<com.rengwuxian.materialedittext.MaterialEditText-->
+            <!--android:id="@+id/et_carControl_carEngineNameValue"-->
+            <!--style="@style/material_edittext"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/car_engine_code"-->
+            <!--app:met_floatingLabelText="@string/car_engine_code" />-->
+            <TextView
+                android:id="@+id/tv_carControl_czPhone"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_ownerName"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="车主联系方式"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_czPhoneValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="车主联系方式"
+                android:textSize="20sp"
+                app:met_floatingLabelText="车主联系方式" />
+
+            <TextView
+                android:id="@+id/tv_carControl_carColor"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_czPhone"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/car_color"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_carColorValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/car_color"
+                android:textSize="20sp"
+                app:met_floatingLabelText="@string/car_color" />
+
+            <TextView
+                android:id="@+id/tv_carControl_DealType"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_carColor"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/car_dealType"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_DealTypeValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/car_dealType"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                app:met_floatingLabelText="@string/car_dealType" />
+
+            <TextView
+                android:id="@+id/tv_carControl_carType"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_DealType"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/car_type"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_carTypeValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/car_type"
+                android:textSize="20sp"
+                app:met_floatingLabelText="@string/car_type" />
+
+            <TextView
+                android:id="@+id/tv_carControl_carPlateType"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_carType"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/car_plate_type"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_carControl_carPlateTypeValue"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:hint="@string/car_plate_type"
+                android:paddingLeft="16dp"
+                android:textColor="@color/text_95_black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_carControl_linkPerson"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_carPlateType"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="列控人"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_linkPersonValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="列控人"
+                android:textSize="20sp"
+                app:met_floatingLabelText="列控人" />
+
+            <TextView
+                android:id="@+id/tv_carControl_linkPersonPhone"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_linkPerson"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="*列控人电话"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_linkPersonPhoneValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="列控人电话"
+                android:textSize="20sp"
+                android:inputType="phone"
+                app:met_floatingLabelText="*列控人电话" />
+
+            <TextView
+                android:id="@+id/tv_carControl_linkPersonRemark"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_carControl_linkPersonPhone"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/control_remark"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_carControl_linkPersonRemarkValue"
+                style="@style/material_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/control_remark"
+                android:textSize="16sp"
+                app:met_floatingLabelText="@string/control_remark" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_sub"
+        style="@style/button_submit"
+        android:gravity="center"
+        android:text="确定"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scroll" />
+</android.support.constraint.ConstraintLayout>

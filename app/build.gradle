@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.anrongtec.cp_hchl"
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0.1"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters("armeabi", "armeabi-v7a")
+        }
+    }
+    signingConfigs {
+        release {
+            keyAlias 'anrong'
+            keyPassword 'anrongkeji'
+            storeFile file('E:/anrong/北京安荣key')
+            storePassword 'anrongkeji'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //OkGo  联网框架：https://github.com/jeasonlzy/okhttp-OkGo
+    compile 'com.lzy.net:okgo:3.0.4'
+    //litepal 数据库：https://github.com/LitePalFramework/LitePal
+    compile 'org.litepal.android:core:1.6.1'
+    //通用adapter：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    //非常强大的三方工具类：https://github.com/Blankj/AndroidUtilCode
+    implementation 'com.blankj:utilcode:1.15.0'
+    //eventbus https://github.com/greenrobot/EventBus
+    compile 'org.greenrobot:eventbus:3.1.1'
+    //butterKnife :https://github.com/JakeWharton/butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //高德地图定位sdk：http://lbs.amap.com/api/android-location-sdk/guide/create-project/android-studio-create-project
+    compile 'com.amap.api:location:latest.integration'
+    //Material-Dialog	MD风格对话框https://github.com/afollestad/material-dialogs
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    //gson   json解析
+    compile 'com.google.code.gson:gson:2.8.4'
+    compile 'com.android.support:multidex:1.0.3'
+    implementation project(':ocr')
+    implementation project(':carkeyboard')
+    //edittext https://github.com/rengwuxian/MaterialEditText
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    //图片加载 Glide https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    //图片选择器 https://github.com/LuckSiege/PictureSelector
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+    compile(name: 'policelibrary-release', ext: 'aar')
+    implementation files('libs/idcard.jar')
+    implementation files('libs/jackson-all-1.7.6.jar')
+}

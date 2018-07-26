@@ -1,0 +1,99 @@
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.anrongtec.lasa.ui.fragment.QueryPersonControlFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/rl_mc_idcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/tv_sfzid"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="@string/person_info_id"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <com.anrongtec.lasa.view.CustomKeyBoard
+            android:id="@+id/et_control_query_person_sfzid"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/activity_vertical_margin"
+            android:layout_toEndOf="@+id/tv_sfzid"
+            android:background="@android:drawable/editbox_background_normal"
+            android:digits="0123456789xX"
+            android:gravity="center|start"
+            android:lines="1"
+            android:maxLength="18"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_sfzid"
+            app:layout_constraintRight_toLeftOf="@+id/iv_mc_scan"
+            app:xml="@xml/idcard_keyboard" />
+
+        <ImageView
+            android:id="@+id/iv_mc_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_check_scan"
+            app:layout_constraintLeft_toRightOf="@+id/et_sfzidValue"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_control_query_person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="@string/person_info_name"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/person_nameIn"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sfzid" />
+
+        <EditText
+            android:id="@+id/et_control_query_person_name"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:maxLength="20"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintLeft_toLeftOf="@+id/et_control_query_person_sfzid"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sfzid" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_submitSelect"
+        style="@style/button_submit"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/btn_submitSelect" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_control_person"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+</android.support.v7.widget.LinearLayoutCompat>

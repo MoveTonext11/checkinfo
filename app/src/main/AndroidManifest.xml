@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anrongtec.lasa">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
+    <!-- 警务需要添加的 -->
+    <uses-permission android:name="yckj.ydjw.permission.APP" />
+    <!-- <user-permission android:name="android.permission.RECORD_AUDIO" /> -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 图片选择权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:parentActivityName=".ui.BaseActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.anrongtec.lasa.ui.BaseActivity" />
+        </activity>
+
+        <!-- 人员核查_人员详情 -->
+        <activity android:name=".ui.DetailInfoActivity" />
+        <!-- 申请权限访问页面 -->
+        <activity android:name=".ui.CountAnalyzeActivity" />
+        <!-- 核查导航 -->
+        <activity android:name=".ui.InfoCheckActivity" />
+        <!-- 布控导航 -->
+        <activity android:name=".ui.ControlNavigationActivity" />
+        <!-- 申请布控 -->
+        <activity android:name=".ui.ControlApplyActivity" />
+        <!-- 布控查询 -->
+        <activity android:name=".ui.ControlQueryActivity" />
+        <!-- 核查记录查询 -->
+        <!-- 核查记录导航 -->
+        <activity android:name=".ui.ControlListActivity" />
+        <!-- 无证化安检 -->
+        <activity android:name=".ui.AnJianActivity" />
+        <activity android:name=".ui.AnJianListActivity" />
+        <activity android:name=".ui.AnJianDetailsActivity" />
+        <!-- 人证合一 -->
+        <activity
+            android:name=".ui.PersonCardJoinActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".utils.NFCCardActivity" />
+        <activity android:name="com.anrong.hebei.myapplication.Main2Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.CheckQueryActivity"></activity>
+    </application>
+
+</manifest>
