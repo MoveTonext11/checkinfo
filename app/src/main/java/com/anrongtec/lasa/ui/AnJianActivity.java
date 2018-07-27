@@ -386,8 +386,8 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                             })
                             .onNegative(new MaterialDialog.SingleButtonCallback() {
                                 @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull
-                                        DialogAction which) {
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
                                 }
                             }).show();
                 }
@@ -404,9 +404,6 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.btn_anjian_personInfoAgo:     //上次核查信息
                 AnJianListActivity.startPerson(AnJianActivity.this, thisRyxxList, AnJianListActivity.TYPE_AGOPERSON);
-                break;
-            case R.id.btn_anjian_add_blacklist: //车辆存疑
-//                selectChangeBlack();
                 break;
             case R.id.btn_anjian_reSet://完成
                 cleanValues();
@@ -444,9 +441,11 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                             CheckInfoManager infoManager = GsonUtil.decode(body, CheckInfoManager.class);
                             CheckInfoManager.DataBean data = infoManager.data;
 //                            请求核查成功之后显示核查的状态按钮
-                            showButton("是否安检状态接口未加", data);
+                            //（PS:后台添加字段是否安检的状态，核查获取之后设定UI界面安检状态的信息）
+                            showButton("是否安检状态接口未加  待定", data);
                             try {
-                                //轻量级数据库存储
+                                //轻量级数据库存储（如果只查当天的  可不可以在记录界面切换数据请求的时候 访问后台同一接口
+                                // 传递参数设定为一天，没必要做前端的存储）
                                 infoManager.saveThrows();
                             } catch (Exception e) {
                                 Log.e(TAG, e.getLocalizedMessage());
@@ -563,8 +562,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                 .items(hpzlNames)
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position,
-                                            CharSequence text) {
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
                         tvAnjianCheckCarPlateTypeValue.setText(hpzlNames.get(position));
                         hpzl = hpzls.get(position);
                     }
@@ -581,23 +579,24 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
         int zbclList = getListSize(data.zbclList);
         int zbryList = getListSize(data.zbryList);
 
-        clAnjianShowButton.setVisibility(View.VISIBLE);
-        btnAnjianCheckedPerson.setText("本次中标\n人员:" + zbryList);
-        btnAnjianCheckedPerson.setEnabled(zbryList != 0);
-        if (zbryList != 0)
+        if (zbryList != 0){
+            clAnjianShowButton.setVisibility(View.VISIBLE);
+            btnAnjianCheckedPerson.setText("本次中标\n人员:" + zbryList);
+        }
+
+        if (zbclList != 0){
             btnAnjianCheckedPerson.setBackgroundColor(Color.RED);
-        btnAnjianCheckedCar.setText("本次中标\n车辆:" + zbclList);
-        btnAnjianCheckedCar.setEnabled(zbclList != 0);
-        if (zbclList != 0)
+            btnAnjianCheckedCar.setText("本次中标\n车辆:" + zbclList);
+        }
+        if (ryxxList!=0){
             btnAnjianCheckedCar.setBackgroundColor(Color.RED);
-        btnAnjianPersonInfoThis.setText("本次核查\n人员:" + ryxxList);
-        btnAnjianPersonInfoThis.setEnabled(ryxxList != 0);
+            btnAnjianPersonInfoThis.setText("本次核查\n人员:" + ryxxList);
+        }
 
         //显示安检证状态 返回结果
         tvAnjianState.setVisibility(View.VISIBLE);
         tvAnjianState.setText(getState(state));
         btnAnjianSubmitSelect.setVisibility(View.GONE);
-//        btnAnjianAddBlacklist.setVisibility(View.VISIBLE);//车辆存疑
         btnReset.setVisibility(View.VISIBLE);
   }
 
