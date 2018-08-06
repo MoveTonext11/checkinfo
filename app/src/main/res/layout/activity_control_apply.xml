@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.anrongtec.lasa.ui.ControlApplyActivity">
+    tools:context="com.anrongtec.cp.ui.ControlApplyActivity">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"

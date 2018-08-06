@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.anrongtec.lasa.ui.fragment.QueryPersonControlFragment">
+    tools:context="com.anrongtec.cp.ui.fragment.QueryPersonControlFragment">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/rl_mc_idcard"
@@ -26,7 +26,7 @@
             android:textSize="@dimen/sp_14"
             app:layout_constraintLeft_toLeftOf="parent" />
 
-        <com.anrongtec.lasa.view.CustomKeyBoard
+        <com.anrongtec.cp.view.CustomKeyBoard
             android:id="@+id/et_control_query_person_sfzid"
             android:layout_width="0dp"
             android:layout_height="@dimen/dp_40"

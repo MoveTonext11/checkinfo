@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.anrongtec.lasa.ui.CheckQueryActivity">
+    tools:context="com.anrongtec.cp.ui.CheckQueryActivity">
     <RelativeLayout
         android:id="@+id/rl_one"
         android:layout_width="match_parent"

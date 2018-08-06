@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/login_bg_shape"
     android:padding="@dimen/activity_vertical_margin"
-    tools:context="com.anrongtec.lasa.ui.LoginActivity">
+    tools:context="com.anrongtec.cp.ui.LoginActivity">
 
     <ImageView
         android:id="@+id/iv_login_icon"

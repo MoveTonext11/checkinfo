@@ -32,8 +32,8 @@
     	</list>
     -->
     <list>
-        <mapping class="com.anrongtec.lasa.entity.PersonCheckEntity" />
-        <mapping class="com.anrongtec.lasa.entity.CarCheckEntity" />
+        <mapping class="com.anrongtec.cp.entity.PersonCheckEntity" />
+        <mapping class="com.anrongtec.cp.entity.CarCheckEntity" />
 
     </list>
 

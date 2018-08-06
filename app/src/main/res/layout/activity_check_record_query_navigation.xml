@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.anrongtec.lasa.ui.InfoCheckActivity">
+    tools:context="com.anrongtec.cp.ui.InfoCheckActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_check_navigation"
