@@ -20,10 +20,7 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.anrongtec.cp.R;
 import com.anrongtec.cp.entity.AnjianParametersEntity;
-import com.anrongtec.cp.entity.CheckInfoBaseEntity;
 import com.anrongtec.cp.entity.CheckInfoManager;
-import com.anrongtec.cp.entity.CheckInfoZBCarEntity;
-import com.anrongtec.cp.entity.CheckInfoZBPersonEntity;
 import com.anrongtec.cp.interfaces.HttpInterfaces;
 import com.anrongtec.cp.interfaces.HttpUrl;
 import com.anrongtec.cp.interfaces.callback.StringDialogCallback;
@@ -107,9 +104,6 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
     //本次核查人员信息
     @BindView(R.id.btn_anjian_thisPersonInfo)
     Button btnAnjianPersonInfoThis;
-    //上次核查的人员信息按钮
-    @BindView(R.id.btn_anjian_personInfoAgo)
-    Button btnAnjianPersonInfoAgo;
     //核查按钮
     @BindView(R.id.btn_anjian_submitSelect)
     Button btnAnjianSubmitSelect;
@@ -139,23 +133,6 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
     private PopupKeyboard mPopupKeyboard;
     private Unbinder unbinder;
 
-    /**
-     * 本次核查的人员信息
-     */
-    private ArrayList<CheckInfoBaseEntity> thisRyxxList;
-    /**
-     * 本次核查中标人员信息
-     */
-    private ArrayList<CheckInfoZBPersonEntity> zbryList;
-    /**
-     * 本次核查中标车辆信息
-     */
-    private ArrayList<CheckInfoZBCarEntity> zbclList;
-    /**
-     * 上次核查的人员信息
-     */
-    private ArrayList<CheckInfoBaseEntity> ryxxList;
-
 
     /**
      * 身份证输入控件的集合
@@ -184,6 +161,10 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
     private NFCReadTask nfcReadTask;
     private int childCount;
     private int numFlog;
+    //获取各种人员信息的集合
+    private ArrayList<CheckInfoManager.DataBean.RyxxListBean> ryxxList;
+    private ArrayList<CheckInfoManager.DataBean.ZbryListBean> zbryList;
+    private ArrayList<CheckInfoManager.DataBean.ZbclListBean> zbclList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -216,7 +197,6 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
         btnAnjianPersonInfoThis.setOnClickListener(this);
         btnAnjianCheckedPerson.setOnClickListener(this);
         btnAnjianCheckedCar.setOnClickListener(this);
-        btnAnjianPersonInfoAgo.setOnClickListener(this);
         ivAnjianCarNumScan.setOnClickListener(this);
         tvAnjianCheckCarPlateTypeValue.setOnClickListener(this);
         OCRIDCard.setOnClickListener(this);
@@ -242,6 +222,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
 
     /**
      * NFC事件回调
+     *
      * @param intent
      */
     @Override
@@ -393,8 +374,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                 }
                 break;
             case R.id.btn_anjian_thisPersonInfo:    //本次核查信息
-                AnJianListActivity.startPerson(AnJianActivity.this, thisRyxxList,
-                        AnJianListActivity.TYPE_THISPERSON);
+                AnJianListActivity.startPerson(AnJianActivity.this, ryxxList);
                 break;
             case R.id.btn_anjian_checkedCar:        //车辆中标
                 AnJianListActivity.startCarBid(AnJianActivity.this, zbclList);
@@ -402,9 +382,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
             case R.id.btn_anjian_checkedPerson:     //人员中标
                 AnJianListActivity.startPersonBid(AnJianActivity.this, zbryList);
                 break;
-            case R.id.btn_anjian_personInfoAgo:     //上次核查信息
-                AnJianListActivity.startPerson(AnJianActivity.this, thisRyxxList, AnJianListActivity.TYPE_AGOPERSON);
-                break;
+
             case R.id.btn_anjian_reSet://完成
                 cleanValues();
                 break;
@@ -575,22 +553,25 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
      */
     private void showButton(String state, CheckInfoManager.DataBean data) {
         //获取到三种集合类别
-        int ryxxList = getListSize(data.ryxxList);
-        int zbclList = getListSize(data.zbclList);
-        int zbryList = getListSize(data.zbryList);
+        ryxxList = data.ryxxList;
+        zbclList = data.zbclList;
+        zbryList = data.zbryList;
+        int ryxxsize = getListSize(ryxxList);
+        int zbrysize = getListSize(zbryList);
+        int zbclsize = getListSize(zbclList);
 
-        if (zbryList != 0){
+        if (zbrysize != 0) {
             clAnjianShowButton.setVisibility(View.VISIBLE);
-            btnAnjianCheckedPerson.setText("本次中标\n人员:" + zbryList);
+            btnAnjianCheckedPerson.setText("本次中标\n人员:" + zbrysize);
         }
 
-        if (zbclList != 0){
-            btnAnjianCheckedPerson.setBackgroundColor(Color.RED);
-            btnAnjianCheckedCar.setText("本次中标\n车辆:" + zbclList);
+        if (zbclsize != 0) {
+            btnAnjianCheckedCar.setVisibility(View.VISIBLE);
+            btnAnjianCheckedCar.setText("本次中标\n车辆:" + zbclsize);
         }
-        if (ryxxList!=0){
-            btnAnjianCheckedCar.setBackgroundColor(Color.RED);
-            btnAnjianPersonInfoThis.setText("本次核查\n人员:" + ryxxList);
+        if (ryxxsize != 0) {
+            btnAnjianPersonInfoThis.setVisibility(View.VISIBLE);
+            btnAnjianPersonInfoThis.setText("本次核查\n人员:" + ryxxsize);
         }
 
         //显示安检证状态 返回结果
@@ -598,7 +579,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
         tvAnjianState.setText(getState(state));
         btnAnjianSubmitSelect.setVisibility(View.GONE);
         btnReset.setVisibility(View.VISIBLE);
-  }
+    }
 
     private int getTextColor(String state) {
         switch (state) {

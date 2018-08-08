@@ -149,9 +149,8 @@ public class ApplyCarControlFragment extends BaseFragment implements View.OnClic
                     params.put("hpzl", hpzl);
                     params.put("lxr", TextUtils.isEmpty(etLinkPerson.getText()) ? "" :
                             etLinkPerson.getText().toString().trim());
-                    params.put("lxdh", etLinkPersonPhone.getText().toString());
+                    params.put("Lxdh", etLinkPersonPhone.getText().toString());
                     params.put("remark", etRemark.getText().toString());
-
                     ControlManager.getInstance().carControl(getActivity(), params, this);
                 }
                 break;

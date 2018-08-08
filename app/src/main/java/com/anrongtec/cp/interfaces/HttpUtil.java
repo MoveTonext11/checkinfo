@@ -48,8 +48,6 @@ public class HttpUtil {
     public static void post(String url, Map<String, String> params, AbsCallback callback, Object
             tag) {
         OkGo.<String>post(url)
-                .tag(tag)
-//                .isMultipart(true)
                 .params(params)
                 .execute(callback);
     }

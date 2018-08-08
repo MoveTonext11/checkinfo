@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -17,13 +18,14 @@ import com.anrongtec.cp.adapter.ControlCarAdapter;
 import com.anrongtec.cp.adapter.ControlPersonAdapter;
 import com.anrongtec.cp.entity.CarControlInfoEntity;
 import com.anrongtec.cp.entity.PersonControlInfoEntity;
+import com.anrongtec.cp.interfaces.HttpInterfaces;
+import com.anrongtec.cp.interfaces.callback.StringDialogCallback;
 import com.anrongtec.cp.interfaces.result.DataResult;
-import com.anrongtec.cp.manager.CarListManager;
 import com.anrongtec.cp.manager.ControlManager;
-import com.anrongtec.cp.manager.PersonListManager;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.google.gson.Gson;
 import com.lzy.okgo.model.Response;
 
 import java.util.ArrayList;
@@ -41,6 +43,8 @@ public class ControlListActivity extends BaseActivity {
 
     @BindView(R.id.rv_control_list)
     RecyclerView rvControlList;
+    @BindView(R.id.tv_null_mesg)
+    TextView tv_numm_msg;
     //人员adapter
     BaseQuickAdapter<PersonControlInfoEntity, BaseViewHolder> mPersonAdapter;
     //车辆adapter
@@ -123,13 +127,8 @@ public class ControlListActivity extends BaseActivity {
         setTitle("查询结果列表");
 
         if (getIntentData()) {
-
-            initView();
-
             initData();
-
         }
-
     }
 
     /**
@@ -159,7 +158,6 @@ public class ControlListActivity extends BaseActivity {
      */
     private void initData() {
 
-
         if (mType == TYPE_PERSON) {
             //获取人员布控信息
             getPersonInfo();
@@ -174,40 +172,30 @@ public class ControlListActivity extends BaseActivity {
      * 获取车辆布控信息
      */
     private void getCarInfo() {
-        CarListManager.getInstance().getCarList(this, mCarId, mNumPlate, page, pageSize, new
-                CarListManager.CallBackCarList() {
-                    @Override
-                    public void callBackSucceed(List<CarControlInfoEntity> listCar) {
-                        mCars.addAll(listCar);
-                        page++;
-                        mCarAdapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void callBackError(Response<String> response) {
-                        ToastUtils.showShort("获取车辆布控信息失败：" + response.message() + response.body());
-                    }
-                });
+        HttpInterfaces.ListCar(mCarId, mNumPlate, String.valueOf(page), String.valueOf(pageSize), new StringDialogCallback() {
+            @Override
+            public void onSuccess(Response<String> response) {
+                Gson gson = new Gson();
+                CarControlInfoEntity carControlInfoEntity = gson.fromJson(response.body(), CarControlInfoEntity.class);
+                mCars.add(carControlInfoEntity);
+                initView();
+            }
+        }, null);
     }
 
     /**
      * 获取人员布控信息
      */
     private void getPersonInfo() {
-        PersonListManager.getInstance().getPersonsList(this, mName, mSfzId, page, pageSize,
-                new PersonListManager.CallBackPerList() {
-                    @Override
-                    public void callBackSucceed(List<PersonControlInfoEntity> listPerson) {
-                        mPersons.addAll(listPerson);
-                        page++;
-                        mPersonAdapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void callBackError(Response<String> response) {
-                        ToastUtils.showShort("获取人员布控信息失败：" + response.message() + response.body());
-                    }
-                });
+        HttpInterfaces.ListPerson(mName, mSfzId, String.valueOf(page), String.valueOf(pageSize), new StringDialogCallback(this, "人员信息获取中...") {
+            @Override
+            public void onSuccess(Response<String> response) {
+                Gson gson = new Gson();
+                PersonControlInfoEntity personControlInfoEntity = gson.fromJson(response.body(), PersonControlInfoEntity.class);
+                mPersons.add(personControlInfoEntity);
+                initView();
+            }
+        }, null);
     }
 
 
@@ -226,39 +214,40 @@ public class ControlListActivity extends BaseActivity {
                 .VERTICAL, false));
         if (mType == TYPE_PERSON) {
             mPersonAdapter = new ControlPersonAdapter(R.layout.item_controlperson_info, mPersons);
-            mPersonAdapter.setOnItemChildClickListener(new BaseQuickAdapter
-                    .OnItemChildClickListener() {
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, final int
-                        position) {
-                    switch (view.getId()) {
-                        case R.id.btn_person_control_item:
-                            showReControlDialog(position);
-                            break;
-                        default:
-                            break;
+            if (mPersons.size() != 0) {
+                mPersonAdapter.setOnItemChildClickListener(new BaseQuickAdapter
+                        .OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
+                        switch (view.getId()) {
+                            case R.id.btn_person_control_item://撤控事件
+                                showReControlDialog(position);
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
-            });
-            rvControlList.setAdapter(mPersonAdapter);
+                });
+                rvControlList.setAdapter(mPersonAdapter);
+            }
         } else if (mType == TYPE_CAR) {
-            mCarAdapter = new ControlCarAdapter(R.layout
-                    .item_controlcar_info, mCars);
-            mCarAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener
-                    () {
-                @Override
-                public void onItemChildClick(BaseQuickAdapter adapter, View view, final int
-                        position) {
-                    switch (view.getId()) {
-                        case R.id.btn_car_control_item:
-                            showReControlDialog(position);
-                            break;
-                        default:
-                            break;
+            mCarAdapter = new ControlCarAdapter(R.layout.item_controlcar_info, mCars);
+            if (mCars.size() != 0) {
+                mCarAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, final int
+                            position) {
+                        switch (view.getId()) {
+                            case R.id.btn_car_control_item://车辆撤控
+                                showReControlDialog(position);
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
-            });
-            rvControlList.setAdapter(mCarAdapter);
+                });
+                rvControlList.setAdapter(mCarAdapter);
+            }
         }
     }
 
@@ -302,21 +291,18 @@ public class ControlListActivity extends BaseActivity {
     private void personReControl(@NonNull String reason, int position) {
         PersonControlInfoEntity person = mPersons.get(position);
         ControlManager.getInstance().personReControl(ControlListActivity.this,
-                person.getLxr(), person.getSfzh(), reason, new ReControlCallback(position));
+                person.data.resultList.get(0).lxr, person.data.resultList.get(0).sfzh, reason, "cp", new ReControlCallback(position));
     }
 
     /**
      * 车辆撤控
      *
      * @param reason
-     * @param position
+     * @param position 备注：撤控人字段为终端信息中的警员信息。暂定为默认字段
      */
     private void carReControl(@NonNull String reason, int position) {
         CarControlInfoEntity car = mCars.get(position);
-        ControlManager.getInstance().carReControl(ControlListActivity.this,
-                car.getCarNumber(), car.getHpzl(), car.getLxr() == null ? "" : car.getLxr(),
-                reason, new ReControlCallback
-                        (position));
+        ControlManager.getInstance().carReControl(ControlListActivity.this, car.data.resultList.get(0).carNumber, car.data.resultList.get(0).lxr, reason, "cp", new ReControlCallback(position));
     }
 
     /**

@@ -30,50 +30,6 @@ public class ControlManager {
         private static ControlManager instance = new ControlManager();
     }
 
-    /**
-     * 人员布控申请
-     *
-     * @param context
-     * @param name
-     * @param gender
-     * @param idCard
-     * @param perType
-     * @param address
-     * @param anqing
-     * @param linkPer
-     * @param linkPhone
-     * @param remark
-     * @param callBackControl
-     */
-    public void personControl(Context context, String name, String gender, String idCard, String
-            perType, String address, String anqing, String linkPer, String linkPhone, final String
-                                      remark, final ControlManager.CallBackControl
-                                      callBackControl) {
-        HttpInterfaces.PersonControl(name, gender, idCard, perType, address, anqing, linkPer,
-                linkPhone, remark, new StringDialogCallback(context, "加载中...") {
-
-
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        String json = response.body();
-                        if (json != null) {
-                            DataResult<String> dataResult = GsonUtil.decode(json, new
-                                    TypeToken<DataResult<String>>() {
-                                    }.getType());
-                            callBackControl.callBackSucceed(dataResult);
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Response<String> response) {
-                        super.onError(response);
-                        callBackControl.callBackError(response);
-                    }
-                }, ControlManager.class.hashCode());
-    }
-
 
     /**
      * 人员布控申请
@@ -86,8 +42,6 @@ public class ControlManager {
             .CallBackControl
             callBackControl) {
         HttpInterfaces.PersonControl(maps, new StringDialogCallback(context, "加载中...") {
-
-
             @Override
             public void onSuccess(Response<String> response) {
                 String json = response.body();
@@ -110,7 +64,7 @@ public class ControlManager {
                 super.onError(response);
                 callBackControl.callBackError(response);
             }
-        }, ControlManager.class.hashCode());
+        }, null);
     }
 
 
@@ -123,9 +77,9 @@ public class ControlManager {
      * @param ckyj
      * @param callBackControl
      */
-    public void personReControl(Context context, String lxr, String sfzh, String ckyj
+    public void personReControl(Context context, String lxr, String sfzh, String ckyj,String ckr
             , final ControlManager.CallBackControl callBackControl) {
-        HttpInterfaces.RecontrolPerson(lxr, sfzh, ckyj, new StringDialogCallback(context,
+        HttpInterfaces.RecontrolPerson(lxr, sfzh, ckyj,ckr,new StringDialogCallback(context,
                 "加载中") {
             @Override
             public void onSuccess(Response<String> response) {
@@ -157,55 +111,6 @@ public class ControlManager {
 
     }
 
-    /**
-     * 车辆布控
-     *
-     * @param context
-     * @param carNumber
-     * @param carPerId
-     * @param clsbdm
-     * @param carPerName
-     * @param fdjh
-     * @param clys
-     * @param dispose
-     * @param keyType
-     * @param hpzl
-     * @param lxr
-     * @param lxdh
-     * @param remark
-     * @param callBackControl
-     */
-    public void carControl(Context context, String carNumber, String carPerId, String clsbdm, String
-            carPerName, String fdjh, String clys, String dispose, String keyType, String hpzl,
-                           String lxr, String lxdh, String remark, final ControlManager
-            .CallBackControl callBackControl) {
-        HttpInterfaces.CarControl(carNumber, carPerId, clsbdm, carPerName, fdjh, clys, dispose,
-                keyType, hpzl, lxr, lxdh, remark, new StringDialogCallback(context, "加载中") {
-
-
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        String body = response.body();
-                        if (body != null) {
-                            DataResult<String> dataResult = GsonUtil.decode(body, new
-                                    TypeToken<DataResult<String>>() {
-                                    }.getType());
-
-                            callBackControl.callBackSucceed(dataResult);
-
-                        }
-                    }
-
-                    @Override
-                    public void onError(Response<String> response) {
-                        super.onError(response);
-                        callBackControl.callBackError(response);
-                    }
-                }, ControlManager.class.hashCode());
-
-
-    }
-
 
     /**
      * 车辆布控
@@ -217,8 +122,6 @@ public class ControlManager {
     public void carControl(Context context, Map<String, String> maps, final ControlManager
             .CallBackControl callBackControl) {
         HttpInterfaces.CarControl(maps, new StringDialogCallback(context, "加载中") {
-
-
             @Override
             public void onSuccess(Response<String> response) {
                 String body = response.body();
@@ -243,7 +146,7 @@ public class ControlManager {
                 super.onError(response);
                 callBackControl.callBackError(response);
             }
-        }, ControlManager.class.hashCode());
+        }, null);
 
 
     }
@@ -254,16 +157,12 @@ public class ControlManager {
      *
      * @param context
      * @param carNumber
-     * @param lxr
      * @param ckyj
      * @param backControl
      */
-    public void carReControl(Context context, String carNumber, String plateNum, String lxr,
-                             String ckyj,
+    public void carReControl(Context context, String carNumber, String lxr, String ckyj,String ckr,
                              final ControlManager.CallBackControl backControl) {
-        HttpInterfaces.RecontrolCar(carNumber, plateNum, lxr, ckyj, new StringDialogCallback
-                (context,
-                        "加载中") {
+        HttpInterfaces.Recontrol(carNumber, lxr, ckyj,ckr, new StringDialogCallback(context, "加载中") {
             @Override
             public void onSuccess(Response<String> response) {
                 String body = response.body();
@@ -286,8 +185,7 @@ public class ControlManager {
                 super.onError(response);
                 backControl.callBackError(response);
             }
-
-        }, ControlManager.class.hashCode());
+        });
 
     }
 
@@ -296,7 +194,6 @@ public class ControlManager {
      */
     public interface CallBackControl {
         void callBackSucceed(DataResult dataResult);
-
         void callBackError(Response<String> response);
     }
 

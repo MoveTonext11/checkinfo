@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.anrongtec.cp.R;
-import com.anrongtec.cp.entity.CheckInfoBaseEntity;
-import com.anrongtec.cp.entity.CheckInfoZBCarEntity;
-import com.anrongtec.cp.entity.CheckInfoZBPersonEntity;
+import com.anrongtec.cp.entity.CheckInfoManager;
 import com.anrongtec.cp.utils.DicDataCache;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
@@ -19,7 +17,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,25 +32,25 @@ public class AnJianListActivity extends BaseActivity implements BaseQuickAdapter
     @BindView(R.id.rv_anjian_list)
     RecyclerView rvAnjianList;
     //人员adapter
-    BaseQuickAdapter<CheckInfoBaseEntity, BaseViewHolder> mPersonAdapter;
+    BaseQuickAdapter<CheckInfoManager.DataBean.RyxxListBean, BaseViewHolder> mPersonAdapter;
     //中标人员adapter
-    BaseQuickAdapter<CheckInfoZBPersonEntity, BaseViewHolder> mPersonBidAdapter;
+    BaseQuickAdapter<CheckInfoManager.DataBean.ZbryListBean, BaseViewHolder> mPersonBidAdapter;
     //中标车辆adapter
-    BaseQuickAdapter<CheckInfoZBCarEntity, BaseViewHolder> mCarBidAdapter;
+    BaseQuickAdapter<CheckInfoManager.DataBean.ZbclListBean, BaseViewHolder> mCarBidAdapter;
 
 
     /**
      * 上次核查的人员信息
      */
-    private List<CheckInfoBaseEntity> mPersons;
+    private ArrayList<CheckInfoManager.DataBean.RyxxListBean> mPersons;
     /**
      * 本次核查中标人员信息
      */
-    private List<CheckInfoZBPersonEntity> mPersonBids;
+    private ArrayList<CheckInfoManager.DataBean.ZbryListBean> mPersonBids;
     /**
      * 本次核查中标车辆信息
      */
-    private List<CheckInfoZBCarEntity> mCarBids;
+    private ArrayList<CheckInfoManager.DataBean.ZbclListBean> mCarBids;
 
 
     //当前页
@@ -74,29 +71,23 @@ public class AnJianListActivity extends BaseActivity implements BaseQuickAdapter
     private static final String EXTRA_CAR_BID = "extra_car_bid";
     private static final String EXTRA_TYPE = "extra_type";
 
-    public static void startPerson(Context context, ArrayList<CheckInfoBaseEntity> baseEntity,
-                                   int flag) {
+    public static void startPerson(Context context, ArrayList<CheckInfoManager.DataBean.RyxxListBean> baseEntity) {
         Intent intent = new Intent(context, AnJianListActivity.class);
         intent.putExtra(EXTRA_PERSON, baseEntity);
-        if (flag == TYPE_THISPERSON) {
-            intent.putExtra(EXTRA_TYPE, TYPE_THISPERSON);
-        } else {
-            intent.putExtra(EXTRA_TYPE, TYPE_AGOPERSON);
-        }
+        intent.putExtra(EXTRA_TYPE, TYPE_THISPERSON);
         context.startActivity(intent);
     }
 
-    public static void startPersonBid(Context context, ArrayList<CheckInfoZBPersonEntity>
-            zbPersonEntity) {
+    public static void startPersonBid(Context context, ArrayList<CheckInfoManager.DataBean.ZbryListBean> zbPersonEntity) {
         Intent intent = new Intent(context, AnJianListActivity.class);
         intent.putExtra(EXTRA_PERSON_BID, zbPersonEntity);
         intent.putExtra(EXTRA_TYPE, TYPE_PERSON_BID);
         context.startActivity(intent);
     }
 
-    public static void startCarBid(Context context, ArrayList<CheckInfoZBCarEntity> zbCarEntity) {
+    public static void startCarBid(Context context, ArrayList<CheckInfoManager.DataBean.ZbclListBean> zbclList) {
         Intent intent = new Intent(context, AnJianListActivity.class);
-        intent.putExtra(EXTRA_CAR_BID, zbCarEntity);
+        intent.putExtra(EXTRA_CAR_BID, zbclList);
         intent.putExtra(EXTRA_TYPE, TYPE_CAR_BID);
         context.startActivity(intent);
     }
@@ -117,17 +108,14 @@ public class AnJianListActivity extends BaseActivity implements BaseQuickAdapter
      * 获取传递参数
      */
     private boolean getIntentData() {
-
         mType = getIntent().getIntExtra(EXTRA_TYPE, 0);
         if (mType == TYPE_THISPERSON) {
-            mPersons = (List<CheckInfoBaseEntity>) getIntent().getSerializableExtra(EXTRA_PERSON);
+            mPersons = (ArrayList<CheckInfoManager.DataBean.RyxxListBean>) getIntent().getSerializableExtra(EXTRA_PERSON);
         } else if (mType == TYPE_PERSON_BID) {
-            mPersonBids = (List<CheckInfoZBPersonEntity>) getIntent().getSerializableExtra
+            mPersonBids = (ArrayList<CheckInfoManager.DataBean.ZbryListBean>) getIntent().getSerializableExtra
                     (EXTRA_PERSON_BID);
         } else if (mType == TYPE_CAR_BID) {
-            mCarBids = (List<CheckInfoZBCarEntity>) getIntent().getSerializableExtra(EXTRA_CAR_BID);
-        } else if (mType == TYPE_AGOPERSON) {
-            mPersons = (List<CheckInfoBaseEntity>) getIntent().getSerializableExtra(EXTRA_PERSON);
+            mCarBids = (ArrayList<CheckInfoManager.DataBean.ZbclListBean>) getIntent().getSerializableExtra(EXTRA_CAR_BID);
         } else {
             ToastUtils.showShort("参数传递错误");
             return false;
@@ -149,49 +137,39 @@ public class AnJianListActivity extends BaseActivity implements BaseQuickAdapter
         rvAnjianList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
                 false));
         if (mType == TYPE_THISPERSON) {
-            mPersonAdapter = new BaseQuickAdapter<CheckInfoBaseEntity, BaseViewHolder>(R.layout
+            mPersonAdapter = new BaseQuickAdapter<CheckInfoManager.DataBean.RyxxListBean, BaseViewHolder>(R.layout
                     .item_anjian_list_rv_person, mPersons) {
                 @Override
-                protected void convert(BaseViewHolder helper, CheckInfoBaseEntity item) {
-                    helper.setText(R.id.tv_anjian_list_person_name, item.getXM())
+                protected void convert(BaseViewHolder helper, CheckInfoManager.DataBean.RyxxListBean item) {
+                    helper.setText(R.id.tv_anjian_list_person_name, item.xm)
                             .setText(R.id.tv_anjian_list_person_gender, DicDataCache.get().getXB
-                                    (item.getXb()))
-                            .setText(R.id.tv_anjian_list_person_sfzid, item.getSFZH());
-
-                    Glide.with(mContext)
-                            .load(item.getXpUrl())
-                            .into((ImageView) helper.getView(R.id.iv_anjian_list_person_photo));
+                                    (item.mz))
+                            .setText(R.id.tv_anjian_list_person_sfzid, item.sfzh);
                 }
             };
             mPersonAdapter.setOnItemClickListener(this);
             rvAnjianList.setAdapter(mPersonAdapter);
         } else if (mType == TYPE_PERSON_BID) {
-            mPersonBidAdapter = new BaseQuickAdapter<CheckInfoZBPersonEntity, BaseViewHolder>(R
+            mPersonBidAdapter = new BaseQuickAdapter<CheckInfoManager.DataBean.ZbryListBean, BaseViewHolder>(R
                     .layout.item_anjian_list_rv_person_bid, mPersonBids) {
                 @Override
-                protected void convert(BaseViewHolder helper, CheckInfoZBPersonEntity item) {
-                    helper.setText(R.id.tv_anjian_list_person_bid_name, item.getXM())
-                            .setText(R.id.tv_anjian_list_person_bid_sfzid, item.getSFZH())
-                            .setText(R.id.tv_anjian_list_person_bid_lxr, "布控联系人:" + item.getBKLXR
-                                    () + "/" + item.getBKLXFS());
+                protected void convert(BaseViewHolder helper, CheckInfoManager.DataBean.ZbryListBean item) {
+                    helper.setText(R.id.tv_anjian_list_person_bid_name, item.xm)
+                            .setText(R.id.tv_anjian_list_person_bid_sfzid, item.sfzh);
                 }
             };
             mPersonBidAdapter.setOnItemClickListener(this);
             rvAnjianList.setAdapter(mPersonBidAdapter);
         } else if (mType == TYPE_CAR_BID) {
-            mCarBidAdapter = new BaseQuickAdapter<CheckInfoZBCarEntity, BaseViewHolder>(R.layout
+            mCarBidAdapter = new BaseQuickAdapter<CheckInfoManager.DataBean.ZbclListBean, BaseViewHolder>(R.layout
                     .item_anjian_list_rv_car_bid, mCarBids) {
                 @Override
-                protected void convert(BaseViewHolder helper, CheckInfoZBCarEntity item) {
-
-//					iv_anjian_list_car_bid_photo
-
-                    helper.setText(R.id.tv_anjian_list_car_bid_name, item.getCZXM())
-                            .setText(R.id.tv_anjian_list_car_bid_sfzid, item.getCZSFZH())
-                            .setText(R.id.tv_anjian_list_car_bid_cphm, item.getCPHM())
-                            .setText(R.id.tv_anjian_list_car_bid_cllb, item.getCLLB())
-                            .setText(R.id.tv_anjian_list_car_bid_lxr, "布控联系人:" + item.getBKLXR()
-                                    + "/" + item.getBKLXFS());
+                protected void convert(BaseViewHolder helper, CheckInfoManager.DataBean.ZbclListBean item) {
+//
+                    helper.setText(R.id.tv_anjian_list_car_bid_name, item.czxm)
+                            .setText(R.id.tv_anjian_list_car_bid_sfzid, item.czsfzh)
+                            .setText(R.id.tv_anjian_list_car_bid_cphm, item.cphm)
+                            .setText(R.id.tv_anjian_list_car_bid_cllb, item.cllb);
                     Glide.with(mContext).load(R.drawable.car).into((ImageView) helper.getView(R
                             .id.iv_anjian_list_car_bid_photo));
 
@@ -199,23 +177,6 @@ public class AnJianListActivity extends BaseActivity implements BaseQuickAdapter
             };
             mCarBidAdapter.setOnItemClickListener(this);
             rvAnjianList.setAdapter(mCarBidAdapter);
-        } else if (mType == TYPE_AGOPERSON) {
-            mPersonAdapter = new BaseQuickAdapter<CheckInfoBaseEntity, BaseViewHolder>(R.layout
-                    .item_anjian_list_rv_person, mPersons) {
-                @Override
-                protected void convert(BaseViewHolder helper, CheckInfoBaseEntity item) {
-                    helper.setText(R.id.tv_anjian_list_person_name, item.getXM())
-                            .setText(R.id.tv_anjian_list_person_gender, DicDataCache.get().getXB
-                                    (item.getXb()))
-                            .setText(R.id.tv_anjian_list_person_sfzid, item.getSFZH());
-
-                    Glide.with(mContext)
-                            .load(item.getXpUrl())
-                            .into((ImageView) helper.getView(R.id.iv_anjian_list_person_photo));
-                }
-            };
-            mPersonAdapter.setOnItemClickListener(this);
-            rvAnjianList.setAdapter(mPersonAdapter);
         }
     }
 
@@ -229,18 +190,12 @@ public class AnJianListActivity extends BaseActivity implements BaseQuickAdapter
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-
-
         if (mType == TYPE_THISPERSON) {
             AnJianDetailsActivity.startPerson(this, mPersons.get(position));
         } else if (mType == TYPE_PERSON_BID) {
             AnJianDetailsActivity.startPersonBid(this, mPersonBids.get(position));
         } else if (mType == TYPE_CAR_BID) {
             AnJianDetailsActivity.startCarBid(this, mCarBids.get(position));
-        } else if (mType == TYPE_AGOPERSON) {
-            AnJianDetailsActivity.startPerson(this, mPersons.get(position));
-        } else {
-            ToastUtils.showShort("跳转异常");
         }
     }
 }

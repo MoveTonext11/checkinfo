@@ -59,7 +59,7 @@ public class CheckQueryActivity extends BaseActivity {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 //跳转到详情页面
-                DetailInfoActivity.start(CheckQueryActivity.this, listPerson.get(position));
+//                DetailInfoActivity.start(CheckQueryActivity.this, listPerson.get(position));
             }
         });
         baseQuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -114,18 +114,21 @@ public class CheckQueryActivity extends BaseActivity {
      * 获取数据  本地存储
      */
     private void getPersonData() {
-//        List<CheckInfoManager> ss = PersonDao.queryVerifyPersons("inAppDate desc", page++, 20, "inAppDate >=? and "
-//                + "inAppDate<?", DateTools.getTimesmorning(), DateTools.getTimesnight());
-//        if (ss == null || ss.size() == 0) {
-//            if (baseQuickAdapter != null) {
-//                baseQuickAdapter.loadMoreEnd(false);
-//            }
-//        } else {
-//            listPerson.add(ss);
-//            if (baseQuickAdapter != null) {
-//                baseQuickAdapter.loadMoreComplete();
-//            }
-//        }
+        //请求服务器接口数据   暂无接口
+        HashMap<String, String> hashMap = new HashMap<>();
+        long l = System.currentTimeMillis();
+        //数据获取
+        hashMap.put("startDate", DateTools.endToDate(String.valueOf(l)));
+        hashMap.put("userId", "130828198708260234");
+        hashMap.put("endDate", DateTools.endToDate(String.valueOf(l)));
+        HttpInterfaces.checkhestory(HttpUrl.CheckHestory, hashMap, new StringDialogCallback(this, "数据获取中...") {
+            @Override
+            public void onSuccess(Response<String> response) {
+                String body = response.body();
+                CheckHestory decode = GsonUtil.decode(body, CheckHestory.class);
+                listPerson.add(decode);//查询到的数据存储到集合中
+            }
+        });
     }
 
     /**

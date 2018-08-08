@@ -17,6 +17,7 @@ import com.anrongtec.cp.manager.CheckHestory;
 import com.anrongtec.cp.utils.DateTools;
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -175,25 +176,23 @@ public class DetailInfoActivity extends BaseActivity {
             //人员信息
             rlDetailPersonInfo.setVisibility(View.VISIBLE);
             //设置人员基本信息
-//            setPersonInfo();
+            setPersonInfo();
             if (!TextUtils.isEmpty(infoManager.data.zbryList.get(0).rwmc)) {//如果任务名称不为空则说明是中标人员
                 //中标信息
                 rlDetailPersonBidInfo.setVisibility(View.VISIBLE);
                 //设置人员中标信息
-//                setPersonBidInfo();
+                setPersonBidInfo();
             }
         } else {
             //车辆信息
             setTitle("车辆详情");
             rlDetailCarInfo.setVisibility(View.VISIBLE);
-            //设置车辆信息   暂无
-//            setCarInfo();
             //判断中标车辆中的中标任务描述   暂无  使用车牌号码代替
             if (!TextUtils.isEmpty(infoManager.data.zbclList.get(0).cphm)) {
                 //中标信息
                 rlDetailCarBidInfo.setVisibility(View.VISIBLE);
                 //设置车辆中标信息
-//                setCarBidInfo();
+                setCarBidInfo();
             }
         }
     }
@@ -210,7 +209,7 @@ public class DetailInfoActivity extends BaseActivity {
         //中标车辆集合  ？？没有车辆查询？？
         List<CheckInfoManager.DataBean.ZbclListBean> zbclList = infoManager.data.zbclList;
         //中标人员集合
-        List<CheckInfoManager.DataBean.ZbryListBean> zbryList = infoManager.data.zbryList;
+        ArrayList<CheckInfoManager.DataBean.ZbryListBean> zbryList = infoManager.data.zbryList;
         //如果中标车辆的集合不为空  则说明是查车？？？逻辑不通   没有单独查车的
 
         if (infoManager==null){//如果传递对象为空则直接return

@@ -196,7 +196,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/btn_anjian_reSet">
 
         <Button
@@ -206,7 +206,6 @@
             android:background="@drawable/selector_btn_blue"
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:padding="@dimen/dp_4"
             android:text=""
             android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -220,7 +219,6 @@
             android:background="@drawable/selector_btn_blue"
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:padding="@dimen/dp_4"
             android:text=""
             android:textColor="@color/white"
             app:layout_constraintLeft_toRightOf="@id/btn_anjian_thisPersonInfo"
@@ -234,25 +232,10 @@
             android:background="@drawable/selector_btn_blue"
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:padding="@dimen/dp_4"
             android:text=""
             android:textColor="@color/white"
-            app:layout_constraintLeft_toRightOf="@+id/btn_anjian_checkedPerson"
-            app:layout_constraintRight_toLeftOf="@+id/btn_anjian_personInfoAgo" />
+            app:layout_constraintLeft_toRightOf="@+id/btn_anjian_checkedPerson"/>
 
-        <Button
-            android:id="@+id/btn_anjian_personInfoAgo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_8"
-            android:background="@drawable/selector_btn_blue"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:padding="@dimen/dp_4"
-            android:text=""
-            android:textColor="@color/white"
-            app:layout_constraintLeft_toRightOf="@+id/btn_anjian_checkedCar"
-            app:layout_constraintRight_toRightOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -262,6 +245,7 @@
         style="@style/button_submit"
         android:layout_width="0dp"
         android:text="快速安检"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btn_anjian_reSet" />

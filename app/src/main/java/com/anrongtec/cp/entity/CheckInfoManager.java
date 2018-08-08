@@ -3,7 +3,7 @@ package com.anrongtec.cp.entity;
 import org.litepal.crud.DataSupport;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by wuwenbo
@@ -33,11 +33,11 @@ public class CheckInfoManager extends DataSupport implements Serializable {
         public String sfzh;
         public String hphm;
         public String hpzl;
-        public List<RyxxListBean> ryxxList;
-        public List<ZbryListBean> zbryList;
-        public List<ZbclListBean> zbclList;
+        public ArrayList<RyxxListBean> ryxxList;
+        public ArrayList<ZbryListBean> zbryList;
+        public ArrayList<ZbclListBean> zbclList;
 
-        public static class RyxxListBean {
+        public static class RyxxListBean extends DataSupport implements Serializable{
             /**
              * sfzzz : 北京
              * xm : dsa
@@ -51,7 +51,7 @@ public class CheckInfoManager extends DataSupport implements Serializable {
             public String sfzh;
         }
 
-        public static class ZbryListBean {
+        public static class ZbryListBean extends DataSupport implements Serializable{
             /**
              * pfirstid : sdasdasd
              * rylb : 类别
@@ -73,7 +73,7 @@ public class CheckInfoManager extends DataSupport implements Serializable {
             public String sfzh;
         }
 
-        public static class ZbclListBean {
+        public static class ZbclListBean extends DataSupport implements Serializable{
             /**
              * date : Fri Jul 20 10:38:26 CST 2018
              * pfirstid : 2018-07-20 10:38:26

@@ -5,8 +5,8 @@ package com.anrongtec.cp.interfaces;
  */
 public class HttpUrl {
 
-    public static String IP_PORT = "192.168.1.65:8080";
-
+    public static String PORT = ":8080";
+    public static String IP_PORT = "192.168.1.199" + PORT;
 
     public static String getUrl() {
         return "http://" + IP_PORT;
@@ -20,25 +20,20 @@ public class HttpUrl {
     public static String CHANGEBLACK = "http://172.168.30.50:7042/webCache/oc/kstgCheck_andriodWhiteTurnBlack.action";
 
     //人员布控
-    public static String PERSON_CONTROL = getUrl() + "/InfoCheckNew/oc/AppCheckInfo_doAddPerson.action";
+    public static String PERSON_CONTROL = getUrl() + "/AnRongI/oc/AppCheckInfo_doAddPerson.action";
     //车辆布控
-    public static String CAR_CONTROL = getUrl() + "/InfoCheckNew/oc/AppCheckInfo_doAddCar.action";
-
-    //布控人查询人员列表
-    public static String PERSON_CONTROLLIST = getUrl() +
-            "/InfoCheckNew/oc/AppCheckInfo_listPerson.action";
-
-    //布控人查询车辆列表
-    public static String CAR_CONTROLLIST = getUrl() + "/InfoCheckNew/oc/AppCheckInfo_listCar.action";
+    public static String CAR_CONTROL = getUrl() + "/AnRongI/oc/AppCheckInfo_doAddCar.action";
+    //撤控人员
+    public static String RECONTROL_PERSON = getUrl() + "/AnRongI/oc/AppCheckInfo_deletePerson.action";
+    //撤控人员
+    public static String RECONTROL_CAR = getUrl() + "/AnRongI/oc/AppCheckInfo_deleteCar.action";
+    //布控人   查询人员列表
+    public static String PERSON_CONTROLLIST = getUrl() + "/AnRongI/oc/AppCheckInfo_listPerson.action";
+    //布控人   查询车辆列表
+    public static String CAR_CONTROLLIST = getUrl() + "/AnRongI/oc/AppCheckInfo_listCar.action";
 
     //查人查车信息   (默认本地查询   接口布控之后更改访问地址)
     public static String CheckInfo = getUrl() + "/AnRongI/as/whiteListAction_checkInfo.action";
     //核查记录消息返回（默认本地   发布修改）
     public static String CheckHestory = getUrl() + "/AnRongI/as/whiteListAction_checkAllEvent.action";
-    //人员撤控
-    public static String RECONTROL_PERSON = getUrl() +
-            "/InfoCheckNew/oc/AppCheckInfo_deletePerson.action";
-    //车辆撤控
-    public static String RECONTROL_CAR = getUrl() + "/InfoCheckNew/oc/AppCheckInfo_deleteCar.action";
-
 }

@@ -148,7 +148,6 @@ public class ApplyPersonControlFragment extends BaseFragment implements View.OnC
             return false;
         }
 
-
         return true;
     }
 
@@ -161,12 +160,10 @@ public class ApplyPersonControlFragment extends BaseFragment implements View.OnC
                     paramMaps.put("xb", getXBCode());
                     paramMaps.put("sfzh", personIDCard);
                     paramMaps.put("rylb", personType);
-                    paramMaps.put("HJDQH", etApplyPersonAddressIn.getText().toString());
+                    paramMaps.put("hjdqh", etApplyPersonAddressIn.getText().toString());
                     paramMaps.put("jyaq", etApplyPersonJyaqIn.getText().toString());
                     paramMaps.put("lxr", etApplyPersonLxrIn.getText().toString());
                     paramMaps.put("lxdh", etApplyPersonLxrPhoneIn.getText().toString());
-                    paramMaps.put("gxmj", etApplyPersonLkrIn.getText().toString());
-                    paramMaps.put("gxmjdh", etApplyPersonLkrPhoneIn.getText().toString());
                     paramMaps.put("remark", etApplyPersonLxrMarkIn.getText().toString());
                     ControlManager.getInstance().personControl(getActivity(), paramMaps, this);
                 }

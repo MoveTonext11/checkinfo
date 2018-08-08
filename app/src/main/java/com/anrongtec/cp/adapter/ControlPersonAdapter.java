@@ -30,19 +30,19 @@ public class ControlPersonAdapter extends BaseQuickAdapter<PersonControlInfoEnti
 
     @Override
     protected void convert(BaseViewHolder helper, PersonControlInfoEntity item) {
-        helper.setText(R.id.tv_person_control_item_name, item.getXm()).
-                setText(R.id.tv_person_control_item_sfzid, item.getSfzh())
-                .setText(R.id.tv_person_control_item_gender, item.getXb().equals("1") ? "男" : "女")
-                .setText(R.id.tv_person_control_item_rylb, item.getRylb())
-                .setText(R.id.tv_person_control_item_control_time, DateTools.getStrTime(item
-                        .getEntryTime()))
-//                .setText(R.id.tv_person_control_item_link, item.getLxr())
-//                .setText(R.id.tv_person_control_item_linkPhone, item.getLxdh())
-                .setText(R.id.tv_person_control_item_control_person, "列控人:" + item.getLxr() + "/"
-                        + item.getLxdh())
-                .addOnClickListener(R.id.btn_person_control_item);
-//        Glide.with(mContext).load("").into((ImageView) helper.getView(R.id
-// .iv_person_control_item_photo));
+        List<PersonControlInfoEntity.DataBean.ResultListBean> resultList= item.data.resultList;
+        if (resultList.size()!=0&&resultList!=null){
+            for (int i = 0; i <resultList.size() ; i++) {
+                helper.setText(R.id.tv_person_control_item_name, item.data.resultList.get(0).xm)
+                        .setText(R.id.tv_person_control_item_sfzid, item.data.resultList.get(0).sfzh)
+                        .setText(R.id.tv_person_control_item_gender, item.data.resultList.get(0).xb.equals("1") ? "男" : "女")
+                        .setText(R.id.tv_person_control_item_rylb, item.data.resultList.get(0).rylb)
+                        .setText(R.id.tv_person_control_item_control_time, DateTools.getStrTime(item.data.resultList.get(0).entryTime))
+                        .setText(R.id.tv_person_control_item_control_person, "列控人:" + item.data.resultList.get(0).lxr + "/"
+                                + item.data.resultList.get(0).lxdh)
+                        .addOnClickListener(R.id.btn_person_control_item);
+            }
 
+        }
     }
 }

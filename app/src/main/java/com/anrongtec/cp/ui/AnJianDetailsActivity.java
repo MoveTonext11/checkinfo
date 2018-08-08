@@ -3,18 +3,14 @@ package com.anrongtec.cp.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.anrongtec.cp.R;
-import com.anrongtec.cp.entity.CheckInfoBaseEntity;
-import com.anrongtec.cp.entity.CheckInfoZBCarEntity;
-import com.anrongtec.cp.entity.CheckInfoZBPersonEntity;
+import com.anrongtec.cp.entity.CheckInfoManager;
 import com.blankj.utilcode.util.ToastUtils;
-import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -115,11 +111,11 @@ public class AnJianDetailsActivity extends BaseActivity {
     @BindView(R.id.rl_anjian_detail_car_bid_info)
     RelativeLayout rlAnjianDetailCarBidInfo;
     //人员信息
-    private CheckInfoBaseEntity mPerson;
+    private CheckInfoManager.DataBean.RyxxListBean mPerson;
     //中标人员信息
-    private CheckInfoZBPersonEntity mPersonBid;
+    private CheckInfoManager.DataBean.ZbryListBean mPersonBid;
     //中标车辆信息
-    private CheckInfoZBCarEntity mCarBid;
+    private CheckInfoManager.DataBean.ZbclListBean mCarBid;
 
     //根据type来判断，当前页面展示哪些信息
     private int mType;
@@ -133,22 +129,21 @@ public class AnJianDetailsActivity extends BaseActivity {
     private static final String EXTRA_TYPE = "extra_type";
 
 
-    public static void startPerson(Context context, @NonNull CheckInfoBaseEntity baseEntity) {
+    public static void startPerson(Context context, CheckInfoManager.DataBean.RyxxListBean baseEntity) {
         Intent intent = new Intent(context, AnJianDetailsActivity.class);
         intent.putExtra(EXTRA_PERSON, baseEntity);
         intent.putExtra(EXTRA_TYPE, TYPE_PERSON);
         context.startActivity(intent);
     }
 
-    public static void startPersonBid(Context context, @NonNull CheckInfoZBPersonEntity
-            zbPersonEntity) {
+    public static void startPersonBid(Context context, CheckInfoManager.DataBean.ZbryListBean zbPersonEntity) {
         Intent intent = new Intent(context, AnJianDetailsActivity.class);
         intent.putExtra(EXTRA_PERSON_BID, zbPersonEntity);
         intent.putExtra(EXTRA_TYPE, TYPE_PERSON_BID);
         context.startActivity(intent);
     }
 
-    public static void startCarBid(Context context, @NonNull CheckInfoZBCarEntity zbCarEntity) {
+    public static void startCarBid(Context context, CheckInfoManager.DataBean.ZbclListBean zbCarEntity) {
         Intent intent = new Intent(context, AnJianDetailsActivity.class);
         intent.putExtra(EXTRA_CAR_BID, zbCarEntity);
         intent.putExtra(EXTRA_TYPE, TYPE_CAR_BID);
@@ -174,13 +169,13 @@ public class AnJianDetailsActivity extends BaseActivity {
 
         mType = getIntent().getIntExtra(EXTRA_TYPE, 0);
         if (mType == TYPE_PERSON) {
-            mPerson = (CheckInfoBaseEntity) getIntent().getSerializableExtra(EXTRA_PERSON);
+            mPerson = (CheckInfoManager.DataBean.RyxxListBean) getIntent().getSerializableExtra(EXTRA_PERSON);
 
             rlAnjianDetailPersonInfo.setVisibility(View.VISIBLE);
             setPersonView();
 
         } else if (mType == TYPE_PERSON_BID) {
-            mPersonBid = (CheckInfoZBPersonEntity) getIntent().getSerializableExtra
+            mPersonBid = (CheckInfoManager.DataBean.ZbryListBean) getIntent().getSerializableExtra
                     (EXTRA_PERSON_BID);
 
             rlAnjianDetailPersonBidInfo.setVisibility(View.VISIBLE);
@@ -188,7 +183,7 @@ public class AnJianDetailsActivity extends BaseActivity {
 
 
         } else if (mType == TYPE_CAR_BID) {
-            mCarBid = (CheckInfoZBCarEntity) getIntent().getSerializableExtra(EXTRA_CAR_BID);
+            mCarBid = (CheckInfoManager.DataBean.ZbclListBean) getIntent().getSerializableExtra(EXTRA_CAR_BID);
 
             rlAnjianDetailCarBidInfo.setVisibility(View.VISIBLE);
             setCarBidView();
@@ -204,57 +199,57 @@ public class AnJianDetailsActivity extends BaseActivity {
      * 设置人员信息
      */
     private void setPersonView() {
-        tvAnjianDetailPersonInfoNameIn.setText(mPerson.getXM());
-        tvAnjianDetailPersonInfoIdCardIn.setText(mPerson.getSFZH());
-        tvAnjianDetailPersonInfoGenderIn.setText(mPerson.getXb());
-        tvAnjianDetailPersonInfoNationIn.setText(mPerson.getMZ());
-        tvAnjianDetailPersonInfoHcjlidIn.setText(mPerson.getId());
-        tvAnjianDetailPersonInfoEventidIn.setText(mPerson.getCheckevent_id());
-        tvAnjianDetailPersonInfoRylbIn.setText(mPerson.getRylb());
-        tvAnjianDetailPersonInfoTasknameIn.setText(mPerson.getTask_names());
-        tvAnjianDetailPersonInfoCheckpointidIn.setText(mPerson.getCheckpoint_id());
-        tvAnjianDetailPersonInfoCheckuserIn.setText(mPerson.getCheck_user());
-        tvAnjianDetailPersonInfoEquiptidIn.setText(mPerson.getEquipt_id());
-        tvAnjianDetailPersonInfoDeptNameIn.setText(mPerson.getDept_name());
-        tvAnjianDetailPersonInfoPcsjIn.setText(mPerson.getPcsj());
-        Glide.with(this).load(mPerson.getXpUrl()).into(ivAnjianDetailPersonInfoAvatar);
+        tvAnjianDetailPersonInfoNameIn.setText(mPerson.xm);
+        tvAnjianDetailPersonInfoIdCardIn.setText(mPerson.sfzh);
+        tvAnjianDetailPersonInfoGenderIn.setText(mPerson.sfzzz);
+        tvAnjianDetailPersonInfoNationIn.setText(mPerson.mz);
+//        tvAnjianDetailPersonInfoHcjlidIn.setText(mPerson.getId());
+//        tvAnjianDetailPersonInfoEventidIn.setText(mPerson.getCheckevent_id());
+//        tvAnjianDetailPersonInfoRylbIn.setText(mPerson.getRylb());
+//        tvAnjianDetailPersonInfoTasknameIn.setText(mPerson.getTask_names());
+//        tvAnjianDetailPersonInfoCheckpointidIn.setText(mPerson.getCheckpoint_id());
+//        tvAnjianDetailPersonInfoCheckuserIn.setText(mPerson.getCheck_user());
+//        tvAnjianDetailPersonInfoEquiptidIn.setText(mPerson.getEquipt_id());
+//        tvAnjianDetailPersonInfoDeptNameIn.setText(mPerson.getDept_name());
+//        tvAnjianDetailPersonInfoPcsjIn.setText(mPerson.getPcsj());
+//        Glide.with(this).load(mPerson.getXpUrl()).into(ivAnjianDetailPersonInfoAvatar);
     }
 
     /**
      * 设置中标人员信息
      */
     private void setPersonBidView() {
-        tvAnjianDetailPersonBidXmIn.setText(mPersonBid.getXM());
-        tvAnjianDetailPersonBidSfzhIn.setText(mPersonBid.getSFZH());
-        tvAnjianDetailPersonBidRylbIn.setText(mPersonBid.getRYLB());
-        tvAnjianDetailPersonBidAqmsIn.setText(mPersonBid.getAQMS());
-        tvAnjianDetailPersonBidClfsIn.setText(mPersonBid.getCLFS());
-        tvAnjianDetailPersonBidLinkIn.setText(mPersonBid.getBKLXR());
-        tvAnjianDetailPersonBidLinkPhoneIn.setText(mPersonBid.getBKLXFS());
-        tvAnjianDetailPersonBidRwmcIn.setText(mPersonBid.getRWMC());
-        tvAnjianDetailPersonBidRwidIn.setText(mPersonBid.getRWID());
-        tvAnjianDetailPersonBidPfirstidIn.setText(mPersonBid.getPFIRSTID());
-        tvAnjianDetailPersonBidPveridIn.setText(mPersonBid.getPVERID());
+        tvAnjianDetailPersonBidXmIn.setText(mPersonBid.xm);
+        tvAnjianDetailPersonBidSfzhIn.setText(mPersonBid.sfzh);
+        tvAnjianDetailPersonBidRylbIn.setText(mPersonBid.rylb);
+        tvAnjianDetailPersonBidAqmsIn.setText(mPersonBid.aqms);
+        tvAnjianDetailPersonBidClfsIn.setText(mPersonBid.clfs);
+//        tvAnjianDetailPersonBidLinkIn.setText(mPersonBid.getBKLXR());
+//        tvAnjianDetailPersonBidLinkPhoneIn.setText(mPersonBid.getBKLXFS());
+        tvAnjianDetailPersonBidRwmcIn.setText(mPersonBid.rwmc);
+//        tvAnjianDetailPersonBidRwidIn.setText(mPersonBid.getRWID());
+        tvAnjianDetailPersonBidPfirstidIn.setText(mPersonBid.pfirstid);
+        tvAnjianDetailPersonBidPveridIn.setText(mPersonBid.pverid);
     }
 
     /**
      * 设置中标车辆信息
      */
     private void setCarBidView() {
-        tvAnjianDetailCarBidCllbIn.setText(mCarBid.getCLLB());
-        tvAnjianDetailCarBidClfsIn.setText(mCarBid.getCLFS());
-        tvAnjianDetailCarBidAqmsIn.setText(mCarBid.getAQMS());
-        tvAnjianDetailCarBidCphmIn.setText(mCarBid.getCPHM());
-        tvAnjianDetailCarBidLinkPersonIn.setText(mCarBid.getBKLXR());
-        tvAnjianDetailCarBidLinkPhoneIn.setText(mCarBid.getBKLXFS());
-        tvAnjianDetailCarBidRwmcIn.setText(mCarBid.getRWMC());
-        tvAnjianDetailCarBidRwidIn.setText(mCarBid.getRWID());
-        tvAnjianDetailCarBidPfirstidIn.setText(mCarBid.getPFIRSTID());
-        tvAnjianDetailCarBidPveridIn.setText(mCarBid.getPVERID());
-        tvAnjianDetailCarBidCzxmIn.setText(mCarBid.getCZXM());
-        tvAnjianDetailCarBidClsbdmIn.setText(mCarBid.getCLSBDM());
-        tvAnjianDetailCarBidClysIn.setText(mCarBid.getCLYS());
-        tvAnjianDetailCarBidFdjhIn.setText(mCarBid.getFDJH());
+        tvAnjianDetailCarBidCllbIn.setText(mCarBid.cllb);
+        tvAnjianDetailCarBidClfsIn.setText(mCarBid.clfs);
+//        tvAnjianDetailCarBidAqmsIn.setText(mCarBid.getAQMS());
+        tvAnjianDetailCarBidCphmIn.setText(mCarBid.cphm);
+//        tvAnjianDetailCarBidLinkPersonIn.setText(mCarBid.getBKLXR());
+//        tvAnjianDetailCarBidLinkPhoneIn.setText(mCarBid.getBKLXFS());
+//        tvAnjianDetailCarBidRwmcIn.setText(mCarBid.getRWMC());
+//        tvAnjianDetailCarBidRwidIn.setText(mCarBid.getRWID());
+        tvAnjianDetailCarBidPfirstidIn.setText(mCarBid.pfirstid);
+        tvAnjianDetailCarBidPveridIn.setText(mCarBid.pverid);
+        tvAnjianDetailCarBidCzxmIn.setText(mCarBid.czxm);
+        tvAnjianDetailCarBidClsbdmIn.setText(mCarBid.clsbdm);
+        tvAnjianDetailCarBidClysIn.setText(mCarBid.clfs);
+        tvAnjianDetailCarBidFdjhIn.setText(mCarBid.fdjh);
     }
 
 }

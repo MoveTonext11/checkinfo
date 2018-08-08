@@ -51,7 +51,6 @@ public class ControlApplyActivity extends BaseActivity {
 
         initData();
 
-
     }
 
 

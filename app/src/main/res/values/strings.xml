@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">信息核查</string>
+    <string name="app_name">核查核录</string>
 
     <!--  标题  -->
     <string name="title_activity_mainIndex">核查核录平台客户端</string>

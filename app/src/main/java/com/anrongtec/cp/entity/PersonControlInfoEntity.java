@@ -2,6 +2,8 @@ package com.anrongtec.cp.entity;
 
 import org.litepal.crud.DataSupport;
 
+import java.util.List;
+
 /**
  * @author libo
  * @Description: 布控人员信息
@@ -9,127 +11,76 @@ import org.litepal.crud.DataSupport;
  */
 
 public class PersonControlInfoEntity extends DataSupport {
+
     /**
-     * xm : 大灰狼
-     * xb : null
-     * sfzh : 220322198710023832
-     * sourceTime : 1525852267965
-     * entryTime : 1525852267965
-     * rylb : 涉毒
-     * lxr : 杨
-     * lxdh : 13383838282
-     * jyaq : null
-     * dataSource : 紧急布控
-     * remark : null
-     * hjdqh : null
+     * code : 000
+     * data : {"pagingInfo":{"endIdx":1,"pageNum":1,"pageRows":1,"startIdx":1,"totalPages":2,"totalRows":2},"resultList":[{"dataSource":"紧急布控","entryTime":1533546004003,"jyaq":"测试","lxdh":"111","lxr":"000","remark":"123","rylb":"其他重点非访","sfzh":"372922199101085415","sourceTime":1533546004002,"xb":"1","xm":"仵文博"}]}
      */
 
-    private String xm;
-    private String xb;
-    private String sfzh;
-    private long sourceTime;
-    private long entryTime;
-    private String rylb;
-    private String lxr;
-    private String lxdh;
-    private String jyaq;
-    private String dataSource;
-    private String remark;
-    private String hjdqh;
+    public String code;
+    public DataBean data;
 
-    public String getXm() {
-        return xm;
+    public static class DataBean {
+        /**
+         * pagingInfo : {"endIdx":1,"pageNum":1,"pageRows":1,"startIdx":1,"totalPages":2,"totalRows":2}
+         * resultList : [{"dataSource":"紧急布控","entryTime":1533546004003,"jyaq":"测试","lxdh":"111","lxr":"000","remark":"123","rylb":"其他重点非访","sfzh":"372922199101085415","sourceTime":1533546004002,"xb":"1","xm":"仵文博"}]
+         */
+
+        public PagingInfoBean pagingInfo;
+        public List<ResultListBean> resultList;
+
+        public static class PagingInfoBean {
+            /**
+             * endIdx : 1
+             * pageNum : 1
+             * pageRows : 1
+             * startIdx : 1
+             * totalPages : 2
+             * totalRows : 2
+             */
+
+            public int endIdx;
+            public int pageNum;
+            public int pageRows;
+            public int startIdx;
+            public int totalPages;
+            public int totalRows;
+        }
+
+        public static class ResultListBean {
+            /**
+             * dataSource : 紧急布控
+             * entryTime : 1533546004003
+             * jyaq : 测试
+             * lxdh : 111
+             * lxr : 000
+             * remark : 123
+             * rylb : 其他重点非访
+             * sfzh : 372922199101085415
+             * sourceTime : 1533546004002
+             * xb : 1
+             * xm : 仵文博
+             */
+
+            public String dataSource;
+            public long entryTime;
+            public String jyaq;
+            public String lxdh;
+            public String lxr;
+            public String remark;
+            public String rylb;
+            public String sfzh;
+            public long sourceTime;
+            public String xb;
+            public String xm;
+        }
     }
 
-    public void setXm(String xm) {
-        this.xm = xm;
-    }
-
-    public String getXb() {
-        return xb;
-    }
-
-    public void setXb(String xb) {
-        this.xb = xb;
-    }
-
-    public String getSfzh() {
-        return sfzh;
-    }
-
-    public void setSfzh(String sfzh) {
-        this.sfzh = sfzh;
-    }
-
-    public long getSourceTime() {
-        return sourceTime;
-    }
-
-    public void setSourceTime(long sourceTime) {
-        this.sourceTime = sourceTime;
-    }
-
-    public long getEntryTime() {
-        return entryTime;
-    }
-
-    public void setEntryTime(long entryTime) {
-        this.entryTime = entryTime;
-    }
-
-    public String getRylb() {
-        return rylb;
-    }
-
-    public void setRylb(String rylb) {
-        this.rylb = rylb;
-    }
-
-    public String getLxr() {
-        return lxr;
-    }
-
-    public void setLxr(String lxr) {
-        this.lxr = lxr;
-    }
-
-    public String getLxdh() {
-        return lxdh;
-    }
-
-    public void setLxdh(String lxdh) {
-        this.lxdh = lxdh;
-    }
-
-    public String getJyaq() {
-        return jyaq;
-    }
-
-    public void setJyaq(String jyaq) {
-        this.jyaq = jyaq;
-    }
-
-    public String getDataSource() {
-        return dataSource;
-    }
-
-    public void setDataSource(String dataSource) {
-        this.dataSource = dataSource;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getHjdqh() {
-        return hjdqh;
-    }
-
-    public void setHjdqh(String hjdqh) {
-        this.hjdqh = hjdqh;
+    @Override
+    public String toString() {
+        return "PersonControlInfoEntity{" +
+                "code='" + code + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

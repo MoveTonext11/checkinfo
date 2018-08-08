@@ -25,18 +25,19 @@ public class ControlCarAdapter extends BaseQuickAdapter<CarControlInfoEntity, Ba
 
     @Override
     protected void convert(BaseViewHolder helper, CarControlInfoEntity item) {
-        helper.setText(R.id.tv_car_control_item_name, item.getCarPerName()).
-                setText(R.id.tv_car_control_item_sfzid, item.getCarPerId())
-                .setText(R.id.tv_car_control_item_carNum, item.getCarNumber())
-                .setText(R.id.tv_person_car_item_control_time, DateTools.getStrTime(item
-                        .getSourceTime()))
-                .setText(R.id.tv_car_control_item_link, item.getLxr())
-                .setText(R.id.tv_car_control_item_cllb, item.getKeyType())
-                .setText(R.id.tv_car_control_item_linkPhone, item.getLxdh())
-                .addOnClickListener(R.id.btn_car_control_item);
-
-//                Glide.with(mContext).load("").into((ImageView) helper.getView(R.id
-//         .iv_car_control_item_photo));
-
+        int size = item.data.resultList.size();
+        List<CarControlInfoEntity.DataBean.ResultListBean> resultList = item.data.resultList;
+        if (size != 0 && resultList != null) {
+            for (int i = 0; i <size ; i++) {
+                helper.setText(R.id.tv_car_control_item_name, resultList.get(i).carPerName).
+                        setText(R.id.tv_car_control_item_sfzid, resultList.get(i).carPerId)
+                        .setText(R.id.tv_car_control_item_carNum, resultList.get(i).carNumber)
+                        .setText(R.id.tv_person_car_item_control_time, DateTools.getStrTime(resultList.get(i).sourceTime))
+                        .setText(R.id.tv_car_control_item_link, resultList.get(i).lxr)
+                        .setText(R.id.tv_car_control_item_cllb, resultList.get(i).keyType)
+                        .setText(R.id.tv_car_control_item_linkPhone, resultList.get(i).lxdh)
+                        .addOnClickListener(R.id.btn_car_control_item);
+            }
+        }
     }
 }
