@@ -28,5 +28,5 @@
     <!--  登录页面  -->
     <color name="login_bg_top">#ff5b9ae9</color>
     <color name="login_bg_bottom">#ff3b82dd</color>
-
+    <color name="picture_selector_cor14">#3173ba</color>
 </resources>

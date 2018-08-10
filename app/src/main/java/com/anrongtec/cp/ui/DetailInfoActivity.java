@@ -149,7 +149,7 @@ public class DetailInfoActivity extends BaseActivity {
         Intent intent = new Intent(context, DetailInfoActivity.class);
         Bundle bundle = new Bundle();
         if (checkInfoManager != null) {
-            bundle.putSerializable(EXTRA_PERSON, checkInfoManager);
+//            bundle.putSerializable(EXTRA_PERSON, checkInfoManager);
         }
         intent.putExtras(bundle);
         context.startActivity(intent);

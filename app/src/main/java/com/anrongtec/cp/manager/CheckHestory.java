@@ -1,20 +1,35 @@
 package com.anrongtec.cp.manager;
 
-import org.litepal.crud.DataSupport;
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by wuwenbo
  * 2018/7/26
  */
-public class CheckHestory extends DataSupport implements Serializable {
+public class CheckHestory implements MultiItemEntity {
+
+    public static final int CAR = 1;
+    public static final int PERSION = 2;
+    public static final int BIDCAR = 3;
+    public static final int BIDPERSION = 4;
+
+    public CheckHestory(int itemType) {
+        this.itemType = itemType;
+    }
+
+    public int itemType;
 
     public List<ListCarRecordBean> listCarRecord;
     public List<?> listBidCarRecord;
     public List<?> listBidPersionRecord;
     public List<?> listPersionRecord;
+
+    @Override
+    public int getItemType() {
+        return itemType;
+    }
 
     public static class ListCarRecordBean {
         /**

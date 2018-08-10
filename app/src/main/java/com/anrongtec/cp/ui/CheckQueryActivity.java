@@ -1,18 +1,23 @@
 package com.anrongtec.cp.ui;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
 import com.anrongtec.cp.R;
-import com.anrongtec.cp.adapter.RecordPersonAdapter;
 import com.anrongtec.cp.interfaces.HttpInterfaces;
 import com.anrongtec.cp.interfaces.HttpUrl;
 import com.anrongtec.cp.interfaces.callback.StringDialogCallback;
 import com.anrongtec.cp.manager.CheckHestory;
+import com.anrongtec.cp.ui.fragment.BidCarFragment;
+import com.anrongtec.cp.ui.fragment.BidPersonFragment;
+import com.anrongtec.cp.ui.fragment.CarFragment;
+import com.anrongtec.cp.ui.fragment.Fragmentmanager;
+import com.anrongtec.cp.ui.fragment.PersonFragment;
 import com.anrongtec.cp.utils.DateTools;
 import com.anrongtec.cp.utils.GsonUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -31,10 +36,13 @@ public class CheckQueryActivity extends BaseActivity {
 
     private RecyclerView rv_control_checkquery;
     private BaseQuickAdapter<CheckHestory, BaseViewHolder> baseQuickAdapter;
-    private List<CheckHestory> listPerson;
+    private ArrayList<CheckHestory> listhestory;
     int page = 1;
     boolean checkDate = true;
     private ToggleButton tb;
+    private ViewPager check_viewpager;
+    private TabLayout check_tab;
+    private List<CheckHestory.ListCarRecordBean> listCarRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,38 +52,34 @@ public class CheckQueryActivity extends BaseActivity {
         initView();
         //默认显示数据
         getDate(checkDate);
-        //框架填充
-        initData();
+        //关联tablayout和viewpager
+        initviewpager(listhestory);
     }
 
-    /**
-     * 适配框架填充
-     */
-    private void initData() {
-        baseQuickAdapter = new RecordPersonAdapter(R.layout.item_check_record_person, listPerson);
-        rv_control_checkquery.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager
-                .VERTICAL, false));
-        baseQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                //跳转到详情页面
-//                DetailInfoActivity.start(CheckQueryActivity.this, listPerson.get(position));
-            }
-        });
-        baseQuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                getDate(checkDate);
-            }
-        }, rv_control_checkquery);
-        rv_control_checkquery.setAdapter(baseQuickAdapter);
-        if (listPerson.isEmpty()) {
-            baseQuickAdapter.setEmptyView(getLayoutInflater().inflate(R.layout.fragment_empty, null));
+    private void initviewpager(ArrayList<CheckHestory> listhestory) {
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        if (listhestory!=null&&listhestory.size()!=0){
+            listCarRecord = listhestory.get(0).listCarRecord;
         }
-    }
+        fragments.add(new PersonFragment(CheckQueryActivity.this,listhestory));
+        fragments.add(new CarFragment(CheckQueryActivity.this,listCarRecord));
+        fragments.add(new BidPersonFragment(CheckQueryActivity.this,listhestory));
+        fragments.add(new BidCarFragment(CheckQueryActivity.this,listCarRecord));
 
+        Fragmentmanager adapter = new Fragmentmanager(getSupportFragmentManager());
+        adapter.setFragments(fragments);
+
+        check_viewpager.setAdapter(adapter);
+
+        check_tab.setupWithViewPager(check_viewpager);
+        check_tab.getTabAt(0).setText("人");
+        check_tab.getTabAt(1).setText("车");
+        check_tab.getTabAt(2).setText("中标人");
+        check_tab.getTabAt(3).setText("中标车");
+    }
     /**
      * 数据请求接口的切换
+     *
      * @param ischecked
      */
     private void getDate(boolean ischecked) {
@@ -90,13 +94,11 @@ public class CheckQueryActivity extends BaseActivity {
      * 布局填充
      */
     private void initView() {
-        listPerson = new ArrayList<>();
-        rv_control_checkquery = (RecyclerView) findViewById(R.id.rv_control_checkquery);
+        listhestory = new ArrayList<>();
         //获取切换按钮控件
         tb = (ToggleButton) findViewById(R.id.tb);
         //设置默认数据
         tb.setText("历史核查");
-//        tb.setBackgroundResource(R.drawable.bg_keyboard_btn);
         //设置切换监听
         tb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -108,6 +110,9 @@ public class CheckQueryActivity extends BaseActivity {
                 getDate(checkDate);
             }
         });
+        check_viewpager = (ViewPager) findViewById(R.id.check_viewpager);
+        check_tab = (TabLayout) findViewById(R.id.check_tab);
+
     }
 
     /**
@@ -126,7 +131,7 @@ public class CheckQueryActivity extends BaseActivity {
             public void onSuccess(Response<String> response) {
                 String body = response.body();
                 CheckHestory decode = GsonUtil.decode(body, CheckHestory.class);
-                listPerson.add(decode);//查询到的数据存储到集合中
+                listhestory.add(decode);//查询到的数据存储到集合中
             }
         });
     }
@@ -139,18 +144,18 @@ public class CheckQueryActivity extends BaseActivity {
         HashMap<String, String> hashMap = new HashMap<>();
         long l = System.currentTimeMillis();
         //数据获取
-        hashMap.put("startDate", DateTools.startToDate(String.valueOf(l)));
+//        hashMap.put("startDate", DateTools.startToDate(String.valueOf(l)));
         hashMap.put("userId", "130828198708260234");
-        hashMap.put("endDate", DateTools.endToDate(String.valueOf(l)));
+//        hashMap.put("endDate", DateTools.endToDate(String.valueOf(l)));
         //测试数据
-//        hashMap.put("startDate", "2017-04-26");
-//        hashMap.put("endDate", "2017-09-28");
+        hashMap.put("startDate", "2017-04-26");
+        hashMap.put("endDate", "2017-09-28");
         HttpInterfaces.checkhestory(HttpUrl.CheckHestory, hashMap, new StringDialogCallback(this, "数据获取中...") {
             @Override
             public void onSuccess(Response<String> response) {
                 String body = response.body();
                 CheckHestory decode = GsonUtil.decode(body, CheckHestory.class);
-                listPerson.add(decode);//查询到的数据存储到集合中
+                listhestory.add(decode);//查询到的数据存储到集合中
             }
         });
     }
