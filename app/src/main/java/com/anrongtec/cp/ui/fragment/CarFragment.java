@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.anrongtec.cp.R;
 import com.anrongtec.cp.adapter.RecordCarAdapter;
 import com.anrongtec.cp.manager.CheckHestory;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.List;
 
@@ -25,17 +24,18 @@ import java.util.List;
 public class CarFragment extends BaseFragment {
 
     private RecyclerView rv_control_checkquery;
+    private List<CheckHestory.ListCarRecordBean> listCarRecord;
 
     @Override
     protected int setView() {
         return R.layout.check_record_person_fragment;
     }
 
-    private List<CheckHestory.ListCarRecordBean> listhestory;
+    private List<CheckHestory> listhestory;
     private Context context;
 
     @SuppressLint("ValidFragment")
-    public CarFragment(Context context, List<CheckHestory.ListCarRecordBean> listhestory) {
+    public CarFragment(Context context, List<CheckHestory> listhestory) {
         this.listhestory = listhestory;
         this.context = context;
     }
@@ -50,22 +50,15 @@ public class CarFragment extends BaseFragment {
     }
 
     private void initData() {
-        RecordCarAdapter baseQuickAdapter = new RecordCarAdapter(R.layout.item_check_record_car, listhestory);
+        if (!listhestory.isEmpty()){
+            listCarRecord = listhestory.get(0).listCarRecord;
+        }
+        RecordCarAdapter baseQuickAdapter = new RecordCarAdapter(R.layout.item_check_record_car, listCarRecord);
         rv_control_checkquery.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-        baseQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                //跳转到详情页面
-//                DetailInfoActivity.start(CheckQueryActivity.this, listPerson.get(position));
-            }
-        });
-        baseQuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-//                getDate(checkDate);
-            }
-        }, rv_control_checkquery);
         rv_control_checkquery.setAdapter(baseQuickAdapter);
+        if (listCarRecord.isEmpty()){
+            baseQuickAdapter.setEmptyView(getLayoutInflater().inflate(R.layout.fragment_empty, null));
+        }
     }
 
     private void initView(View rootView) {

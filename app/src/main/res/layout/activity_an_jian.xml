@@ -190,7 +190,8 @@
         android:text="安检状态："
         app:layout_constraintBottom_toTopOf="@+id/cl_anjian_showButton" />
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/cl_anjian_showButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -200,6 +201,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_anjian_reSet">
 
         <Button
+            android:layout_weight="1"
             android:id="@+id/btn_anjian_thisPersonInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -207,11 +209,13 @@
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:text=""
+            android:visibility="gone"
             android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/btn_anjian_checkedPerson" />
 
         <Button
+            android:layout_weight="1"
             android:id="@+id/btn_anjian_checkedPerson"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -220,11 +224,13 @@
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:text=""
+            android:visibility="gone"
             android:textColor="@color/white"
             app:layout_constraintLeft_toRightOf="@id/btn_anjian_thisPersonInfo"
             app:layout_constraintRight_toLeftOf="@+id/btn_anjian_checkedCar" />
 
         <Button
+            android:layout_weight="1"
             android:id="@+id/btn_anjian_checkedCar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -233,11 +239,12 @@
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:text=""
+            android:visibility="gone"
             android:textColor="@color/white"
             app:layout_constraintLeft_toRightOf="@+id/btn_anjian_checkedPerson"/>
 
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 
     <Button

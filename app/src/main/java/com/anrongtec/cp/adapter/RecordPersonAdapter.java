@@ -2,10 +2,11 @@ package com.anrongtec.cp.adapter;
 
 import com.anrongtec.cp.R;
 import com.anrongtec.cp.manager.CheckHestory;
+import com.anrongtec.cp.utils.DateTools;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -14,22 +15,22 @@ import java.util.ArrayList;
  * @date 2018/5/16
  */
 
-public class RecordPersonAdapter extends BaseQuickAdapter<CheckHestory, BaseViewHolder> {
+public class RecordPersonAdapter extends BaseQuickAdapter<CheckHestory.ListPersionRecordBean, BaseViewHolder> {
 
 
-    public RecordPersonAdapter(int layoutResId, ArrayList<CheckHestory> data) {
+    public RecordPersonAdapter(int layoutResId, List<CheckHestory.ListPersionRecordBean> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, CheckHestory item) {
-        helper.setText(R.id.tv_person_record_item_name, item.listCarRecord.get(0).cp);
+    protected void convert(BaseViewHolder helper, CheckHestory.ListPersionRecordBean item) {
+        helper.setText(R.id.tv_person_record_item_sfzid, item.sfhm)
 //                .setText(R.id.tv_person_record_item_gender, item.getXb())
-//                .setText(R.id.tv_person_record_item_sfzid, item.getSfhm())
-//                .setText(R.id.tv_person_record_item_check_time, DateTools.getStrTime(item
-//                        .getInAppDate()))
+//                .setText(R.id.tv_person_record_item_name, item.sfhm)
+                .setText(R.id.tv_person_record_item_check_time, DateTools.getStrTime(item
+                        .createTime))
 //                .setText(R.id.tv_person_record_item_rylb, item.getRylb())
-//                .setGone(R.id.tv_person_record_item_rylb, isBid)
-//                .setGone(R.id.iv_person_record_item_tag, isBid);
+//                .setGone(R.id.tv_person_record_item_rylb, isBid);
+                .setGone(R.id.iv_person_record_item_tag, false);
     }
 }

@@ -5,9 +5,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +17,6 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.anrongtec.cp.R;
-import com.anrongtec.cp.entity.AnjianParametersEntity;
 import com.anrongtec.cp.entity.CheckInfoManager;
 import com.anrongtec.cp.interfaces.HttpInterfaces;
 import com.anrongtec.cp.interfaces.HttpUrl;
@@ -27,7 +24,6 @@ import com.anrongtec.cp.interfaces.callback.StringDialogCallback;
 import com.anrongtec.cp.ui.fragment.CheckPersonFragment;
 import com.anrongtec.cp.utils.DicDataCache;
 import com.anrongtec.cp.utils.GsonUtil;
-import com.anrongtec.cp.utils.HBUtils;
 import com.anrongtec.cp.utils.IDCardUtil;
 import com.anrongtec.cp.utils.NFCReadTask;
 import com.anrongtec.cp.utils.NFCReaderHelper;
@@ -94,7 +90,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
 
     //核查结果按钮的父布局
     @BindView(R.id.cl_anjian_showButton)
-    ConstraintLayout clAnjianShowButton;
+    LinearLayout clAnjianShowButton;
     //人员中标信息按钮
     @BindView(R.id.btn_anjian_checkedPerson)
     Button btnAnjianCheckedPerson;
@@ -123,7 +119,6 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.et_anjian_check_czIDCardValue)
     CustomKeyBoard etAnjianCheckCzIDCardValue;
 
-    AnjianParametersEntity parametersEntity = null;
     public String driverID = "";
     //车牌号
     private String carNumber;
@@ -312,6 +307,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
         }
         if (sfzViews.size() != 0) {
             sfzIdBuilder = new StringBuilder();
+            //循环添加乘车人身份证号拼接
             for (int i = 0; i < sfzViews.size(); i++) {
                 CustomKeyBoard customKeyBoard = sfzViews.get(i);
                 String sfzId = customKeyBoard.getText().toString();
@@ -393,7 +389,10 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                         //身份证确认
                         if (IDCardUtil.managerIDCard(etAnjianCheckCzIDCardValue)) {
                             driverID = etAnjianCheckCzIDCardValue.getText().toString();
-                            driverID = "," + driverID;
+                            if (sfzIdBuilder.length() != 0) {
+                                driverID = "," + driverID;
+                            }
+                            sfzIdBuilder.append(driverID);
                         } else {
                             etAnjianCheckCzIDCardValue.setError("驾驶人身份证输入有误");
                             return;
@@ -402,13 +401,8 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                     HashMap<String, String> hashMap = new HashMap<>();
                     hashMap.put("hphm", carNumber);
                     hashMap.put("hpzl", hpzl);
-                    hashMap.put("sfzh", driverID);
-
-                    parametersEntity = new AnjianParametersEntity
-                            (HBUtils.getDefaultIMEI(this), sfzIdBuilder.append(driverID).toString
-                                    (), carNumber, hpzl,
-                                    3, 1,
-                                    1, "A", "秦皇岛", "");
+                    hashMap.put("sfzh", String.valueOf(sfzIdBuilder));
+                    hashMap.put("userId", "110");//待定  终端设备或者统一认证警员号
 
                     //将信息获取出来之后封装到map集合中  传递到接口中
                     HttpInterfaces.checkInfo(HttpUrl.CheckInfo, hashMap, new StringDialogCallback(this, "查询中...") {
@@ -421,13 +415,6 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
 //                            请求核查成功之后显示核查的状态按钮
                             //（PS:后台添加字段是否安检的状态，核查获取之后设定UI界面安检状态的信息）
                             showButton("是否安检状态接口未加  待定", data);
-                            try {
-                                //轻量级数据库存储（如果只查当天的  可不可以在记录界面切换数据请求的时候 访问后台同一接口
-                                // 传递参数设定为一天，没必要做前端的存储）
-                                infoManager.saveThrows();
-                            } catch (Exception e) {
-                                Log.e(TAG, e.getLocalizedMessage());
-                            }
                         }
                     });
                 }
@@ -500,6 +487,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
 
     /**
      * 扫描身份证
+     *
      * @param currentCount
      */
     public void scanSfzId(int currentCount) {
@@ -561,7 +549,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
         int zbclsize = getListSize(zbclList);
 
         if (zbrysize != 0) {
-            clAnjianShowButton.setVisibility(View.VISIBLE);
+            btnAnjianCheckedPerson.setVisibility(View.VISIBLE);
             btnAnjianCheckedPerson.setText("本次中标\n人员:" + zbrysize);
         }
 

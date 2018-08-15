@@ -177,7 +177,10 @@ public class ControlListActivity extends BaseActivity {
             public void onSuccess(Response<String> response) {
                 Gson gson = new Gson();
                 CarControlInfoEntity carControlInfoEntity = gson.fromJson(response.body(), CarControlInfoEntity.class);
-                mCars.add(carControlInfoEntity);
+                List<CarControlInfoEntity.DataBean.ResultListBean> resultList = carControlInfoEntity.data.resultList;
+                if (resultList.size() != 0) {
+                    mCars.add(carControlInfoEntity);
+                }
                 initView();
             }
         }, null);
@@ -192,7 +195,10 @@ public class ControlListActivity extends BaseActivity {
             public void onSuccess(Response<String> response) {
                 Gson gson = new Gson();
                 PersonControlInfoEntity personControlInfoEntity = gson.fromJson(response.body(), PersonControlInfoEntity.class);
-                mPersons.add(personControlInfoEntity);
+                List<PersonControlInfoEntity.DataBean.ResultListBean> resultList = personControlInfoEntity.data.resultList;
+                if (resultList.size() != 0) {
+                    mPersons.add(personControlInfoEntity);
+                }
                 initView();
             }
         }, null);
@@ -228,8 +234,12 @@ public class ControlListActivity extends BaseActivity {
                         }
                     }
                 });
-                rvControlList.setAdapter(mPersonAdapter);
             }
+            rvControlList.setAdapter(mPersonAdapter);
+            if (mPersons.isEmpty()) {
+                mPersonAdapter.setEmptyView(getLayoutInflater().inflate(R.layout.fragment_empty, null));
+            }
+
         } else if (mType == TYPE_CAR) {
             mCarAdapter = new ControlCarAdapter(R.layout.item_controlcar_info, mCars);
             if (mCars.size() != 0) {
@@ -246,7 +256,10 @@ public class ControlListActivity extends BaseActivity {
                         }
                     }
                 });
-                rvControlList.setAdapter(mCarAdapter);
+            }
+            rvControlList.setAdapter(mCarAdapter);
+            if (mCars.isEmpty()) {
+                mCarAdapter.setEmptyView(getLayoutInflater().inflate(R.layout.fragment_empty, null));
             }
         }
     }

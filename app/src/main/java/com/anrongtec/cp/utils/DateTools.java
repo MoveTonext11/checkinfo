@@ -121,6 +121,7 @@ public class DateTools {
     /**
      * 将时间戳转换为年月日
      * 起始时间戳
+     *
      * @param s
      * @return
      */
@@ -128,24 +129,26 @@ public class DateTools {
         String res = "";
         String timemonth = stampToMonth(s);//年月
         String timeday = stampToDay(s);//日
+        String timemm = getStrTime(new Long(s));//时分秒
         int day = Integer.parseInt(timeday);
-        if (day<=3){//如果当天时间日期小于3  则起始时间定位01号
-            timeday="01";
-        }else{
-            timeday=String.valueOf(day-3);
+        if (day <= 3) {//如果当天时间日期小于3  则起始时间定位01号
+            timeday = "01";
+        } else {
+            timeday = String.valueOf(day - 3);
         }
-        res = timemonth + "-" + timeday;
+        res = timemonth + "-" + timeday + " " + timemm;
         return res;
     }
 
     /**
      * 结束时间戳  查询到当天日期
+     *
      * @param s
      * @return
      */
     public static String endToDate(String s) {
         String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long lt = Long.valueOf(s);
         Date date = new Date(lt);
         res = simpleDateFormat.format(date);

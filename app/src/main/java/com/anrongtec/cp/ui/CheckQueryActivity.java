@@ -22,11 +22,11 @@ import com.anrongtec.cp.utils.DateTools;
 import com.anrongtec.cp.utils.GsonUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.luck.picture.lib.tools.ToastManage;
 import com.lzy.okgo.model.Response;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * 核查记录界面（新）  人员核查车辆核查整合界面
@@ -42,29 +42,24 @@ public class CheckQueryActivity extends BaseActivity {
     private ToggleButton tb;
     private ViewPager check_viewpager;
     private TabLayout check_tab;
-    private List<CheckHestory.ListCarRecordBean> listCarRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_query);
-        setTitle("核查核录");
+        setTitle("核查记录");
         initView();
         //默认显示数据
         getDate(checkDate);
-        //关联tablayout和viewpager
-        initviewpager(listhestory);
     }
 
     private void initviewpager(ArrayList<CheckHestory> listhestory) {
         ArrayList<Fragment> fragments = new ArrayList<>();
-        if (listhestory!=null&&listhestory.size()!=0){
-            listCarRecord = listhestory.get(0).listCarRecord;
-        }
+
         fragments.add(new PersonFragment(CheckQueryActivity.this,listhestory));
-        fragments.add(new CarFragment(CheckQueryActivity.this,listCarRecord));
+        fragments.add(new CarFragment(CheckQueryActivity.this,listhestory));
         fragments.add(new BidPersonFragment(CheckQueryActivity.this,listhestory));
-        fragments.add(new BidCarFragment(CheckQueryActivity.this,listCarRecord));
+        fragments.add(new BidCarFragment(CheckQueryActivity.this,listhestory));
 
         Fragmentmanager adapter = new Fragmentmanager(getSupportFragmentManager());
         adapter.setFragments(fragments);
@@ -79,7 +74,6 @@ public class CheckQueryActivity extends BaseActivity {
     }
     /**
      * 数据请求接口的切换
-     *
      * @param ischecked
      */
     private void getDate(boolean ischecked) {
@@ -123,8 +117,8 @@ public class CheckQueryActivity extends BaseActivity {
         HashMap<String, String> hashMap = new HashMap<>();
         long l = System.currentTimeMillis();
         //数据获取
-        hashMap.put("startDate", DateTools.endToDate(String.valueOf(l)));
-        hashMap.put("userId", "130828198708260234");
+        hashMap.put("startDate", DateTools.startToDate(String.valueOf(l)));
+        hashMap.put("userId", "110");//待定  传递数据为终端识别或者警员ID  统一认证获取
         hashMap.put("endDate", DateTools.endToDate(String.valueOf(l)));
         HttpInterfaces.checkhestory(HttpUrl.CheckHestory, hashMap, new StringDialogCallback(this, "数据获取中...") {
             @Override
@@ -132,6 +126,13 @@ public class CheckQueryActivity extends BaseActivity {
                 String body = response.body();
                 CheckHestory decode = GsonUtil.decode(body, CheckHestory.class);
                 listhestory.add(decode);//查询到的数据存储到集合中
+                initviewpager(listhestory);
+            }
+
+            @Override
+            public void onError(Response<String> response) {
+                super.onError(response);
+                ToastManage.s(CheckQueryActivity.this,response.message());
             }
         });
     }
@@ -144,19 +145,26 @@ public class CheckQueryActivity extends BaseActivity {
         HashMap<String, String> hashMap = new HashMap<>();
         long l = System.currentTimeMillis();
         //数据获取
-//        hashMap.put("startDate", DateTools.startToDate(String.valueOf(l)));
-        hashMap.put("userId", "130828198708260234");
-//        hashMap.put("endDate", DateTools.endToDate(String.valueOf(l)));
-        //测试数据
-        hashMap.put("startDate", "2017-04-26");
-        hashMap.put("endDate", "2017-09-28");
+        hashMap.put("startDate", DateTools.startToDate(String.valueOf(l)));
+        hashMap.put("userId", "110");
+        hashMap.put("endDate", DateTools.endToDate(String.valueOf(l)));
+//        测试数据
+//        hashMap.put("startDate", "2017-04-26");
+//        hashMap.put("endDate", "2017-09-28");
         HttpInterfaces.checkhestory(HttpUrl.CheckHestory, hashMap, new StringDialogCallback(this, "数据获取中...") {
             @Override
             public void onSuccess(Response<String> response) {
                 String body = response.body();
                 CheckHestory decode = GsonUtil.decode(body, CheckHestory.class);
                 listhestory.add(decode);//查询到的数据存储到集合中
+                initviewpager(listhestory);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        listhestory.remove(CheckHestory.class);
     }
 }

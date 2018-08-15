@@ -59,7 +59,6 @@ public class ControlQueryActivity extends BaseActivity {
                 fragments, titles));
         viewPager.setCurrentItem(0);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 
     @Override
