@@ -1,22 +1,28 @@
 package com.anrongtec.cp.ui;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.anrongtec.cp.R;
 import com.anrongtec.cp.entity.Function;
+import com.anrongtec.cp.utils.DialogUtil;
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.anrongtec.cp.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import zhtsample.zht.com.offlinecheck.HcSdkInitCallback;
+import zhtsample.zht.com.offlinecheck.HcSdkManager;
 
 /**
  * 主页面
@@ -35,7 +41,23 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initofflinecheck();
         initView();
+    }
+
+    private void initofflinecheck() {
+        //增加离线核查功能
+        HcSdkManager.getInstance().init(this, getApplication(), new HcSdkInitCallback() {
+            @Override
+            public void onSuccess(int code) {
+                ToastUtils.showShort("离线核查初始化成功");
+            }
+
+            @Override
+            public void onFail(int code, String msg) {
+                ToastUtils.showShort("离线核查初始化失败:" + msg);
+            }
+        });
     }
 
     /**
@@ -109,5 +131,27 @@ public class MainActivity extends BaseActivity {
         //统计分析
         functions.add(new Function(4, getString(R.string.main_function_count_analyze), R.drawable
                 .ic_icon_main_tongji));
+    }
+
+    /**
+     * f返回键的监听
+     * 弹窗询问是否确定退出APP
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == 4)) {
+            DialogUtil.createTipDialog(this, "温馨提示", "是否退出核查核录", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            }, null);
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+        return false;
     }
 }

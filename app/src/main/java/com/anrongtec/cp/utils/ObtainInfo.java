@@ -1,6 +1,7 @@
 package com.anrongtec.cp.utils;
 
 import android.content.Context;
+import android.os.Build;
 
 import com.anrongtec.cp.MyApplication;
 import com.yckj.ydjw.policelibrary.PoilceUserManage;
@@ -46,5 +47,17 @@ public class ObtainInfo {
             e.printStackTrace();
         }
         return commonMap;
+    }
+
+    /**
+     * 检查终端类型
+     * @return
+     */
+    public static boolean checkPhoneModel() {
+        String model = Build.MODEL;
+        if (model.equals("UniStrong HD508") || model.equals("HD808")) {
+            return true;
+        }
+        return false;
     }
 }

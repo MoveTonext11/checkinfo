@@ -31,6 +31,7 @@ import com.anrongtec.cp.utils.NFCUtils;
 import com.anrongtec.cp.view.CustomKeyBoard;
 import com.anrongtec.ocr.OcrCarActivity;
 import com.anrongtec.ocr.OcrPersonActivity;
+import com.arong.swing.db.entity.KeyPerson;
 import com.blankj.utilcode.util.ToastUtils;
 import com.carkeyboard.KeyboardInputController;
 import com.carkeyboard.support.PopupKeyboard;
@@ -49,6 +50,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.com.senter.model.IdentityCardZ;
+import zhtsample.zht.com.offlinecheck.HcSdkManager;
 
 
 /**
@@ -398,25 +400,33 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                             return;
                         }
                     }
-                    HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("hphm", carNumber);
-                    hashMap.put("hpzl", hpzl);
-                    hashMap.put("sfzh", String.valueOf(sfzIdBuilder));
-                    hashMap.put("userId", "110");//待定  终端设备或者统一认证警员号
+                    List<KeyPerson> keyPeople = HcSdkManager.getInstance().checkPerson(String.valueOf(sfzIdBuilder));
+                    if (keyPeople != null) {
+                        KeyPerson keyPerson = keyPeople.get(0);
+                        ToastUtils.showShort("离线核查初始化成功" + keyPerson.getRwmc() + "\t" + keyPerson.getRylb());
+                    } else {
+                        //离线失败之后进行后台数据盘查
+                        HashMap<String, String> hashMap = new HashMap<>();
+                        hashMap.put("hphm", carNumber);
+                        hashMap.put("hpzl", hpzl);
+                        hashMap.put("sfzh", String.valueOf(sfzIdBuilder));
+                        hashMap.put("userId", "110");//待定  终端设备或者统一认证警员号
 
-                    //将信息获取出来之后封装到map集合中  传递到接口中
-                    HttpInterfaces.checkInfo(HttpUrl.CheckInfo, hashMap, new StringDialogCallback(this, "查询中...") {
-                        @Override
-                        public void onSuccess(Response<String> response) {
-                            String body = response.body();
-                            //获取的核查信息
-                            CheckInfoManager infoManager = GsonUtil.decode(body, CheckInfoManager.class);
-                            CheckInfoManager.DataBean data = infoManager.data;
+                        //将信息获取出来之后封装到map集合中  传递到接口中
+                        HttpInterfaces.checkInfo(HttpUrl.CheckInfo, hashMap, new StringDialogCallback(AnJianActivity.this, "查询中...") {
+                            @Override
+                            public void onSuccess(Response<String> response) {
+                                String body = response.body();
+                                //获取的核查信息
+                                CheckInfoManager infoManager = GsonUtil.decode(body, CheckInfoManager.class);
+                                CheckInfoManager.DataBean data = infoManager.data;
 //                            请求核查成功之后显示核查的状态按钮
-                            //（PS:后台添加字段是否安检的状态，核查获取之后设定UI界面安检状态的信息）
-                            showButton("是否安检状态接口未加  待定", data);
-                        }
-                    });
+                                //（PS:后台添加字段是否安检的状态，核查获取之后设定UI界面安检状态的信息）
+                                showButton("是否安检状态接口未加  待定", data);
+                            }
+                        });
+
+                    }
                 }
                 break;
             default:

@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/carkeyboard/carkeyboard.iml" filepath="$PROJECT_DIR$/carkeyboard/carkeyboard.iml" />
       <module fileurl="file://$PROJECT_DIR$/checkinfo.iml" filepath="$PROJECT_DIR$/checkinfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ocr/ocr.iml" filepath="$PROJECT_DIR$/ocr/ocr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/offlineCheck/offlineCheck.iml" filepath="$PROJECT_DIR$/offlineCheck/offlineCheck.iml" />
     </modules>
   </component>
 </project>

@@ -45,6 +45,7 @@ public class MyApplication extends MultiDexApplication {
     }
 
 
+
     private void initOkGo() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .connectTimeout(CUSTOM_TIMEOUT, TimeUnit.MILLISECONDS)//全局的连接超时时间

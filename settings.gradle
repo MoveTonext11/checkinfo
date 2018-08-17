@@ -1,1 +1,1 @@
-include ':app', ':ocr', ':carkeyboard', ':app'
+include ':app', ':ocr', ':carkeyboard', ':app','offlineCheck'

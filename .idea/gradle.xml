@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/carkeyboard" />
             <option value="$PROJECT_DIR$/ocr" />
+            <option value="$PROJECT_DIR$/offlineCheck" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

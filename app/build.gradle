@@ -79,4 +79,5 @@ dependencies {
     compile(name: 'policelibrary-release', ext: 'aar')
     implementation files('libs/idcard.jar')
     implementation files('libs/jackson-all-1.7.6.jar')
+    implementation project(':offlineCheck')
 }
