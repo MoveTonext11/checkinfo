@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.anrongtec.cp.R;
 import com.anrongtec.cp.entity.Function;
 import com.anrongtec.cp.utils.DialogUtil;
+import com.anrongtec.cp.utils.ObtainInfo;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -41,21 +42,22 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        initofflinecheck();
+        if (!ObtainInfo.getNetWorkType(this)) {
+            initofflinecheck();
+        }
         initView();
     }
 
-    private void initofflinecheck() {
-        //增加离线核查功能
+    public void initofflinecheck() {
         HcSdkManager.getInstance().init(this, getApplication(), new HcSdkInitCallback() {
             @Override
             public void onSuccess(int code) {
-                ToastUtils.showShort("离线核查初始化成功");
+                ToastUtils.showShort("网络不可用，离线核查初始化成功");
             }
 
             @Override
             public void onFail(int code, String msg) {
-                ToastUtils.showShort("离线核查初始化失败:" + msg);
+                ToastUtils.showShort("网络不可用，离线核查初始化失败:" + msg);
             }
         });
     }
@@ -136,6 +138,7 @@ public class MainActivity extends BaseActivity {
     /**
      * f返回键的监听
      * 弹窗询问是否确定退出APP
+     *
      * @param keyCode
      * @param event
      * @return

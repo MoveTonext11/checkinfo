@@ -28,6 +28,7 @@ import com.anrongtec.cp.utils.IDCardUtil;
 import com.anrongtec.cp.utils.NFCReadTask;
 import com.anrongtec.cp.utils.NFCReaderHelper;
 import com.anrongtec.cp.utils.NFCUtils;
+import com.anrongtec.cp.utils.ObtainInfo;
 import com.anrongtec.cp.view.CustomKeyBoard;
 import com.anrongtec.ocr.OcrCarActivity;
 import com.anrongtec.ocr.OcrPersonActivity;
@@ -400,11 +401,8 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                             return;
                         }
                     }
-                    List<KeyPerson> keyPeople = HcSdkManager.getInstance().checkPerson(String.valueOf(sfzIdBuilder));
-                    if (keyPeople != null) {
-                        KeyPerson keyPerson = keyPeople.get(0);
-                        ToastUtils.showShort("离线核查初始化成功" + keyPerson.getRwmc() + "\t" + keyPerson.getRylb());
-                    } else {
+                    //判断手机网络是否可用
+                    if (ObtainInfo.getNetWorkType(this)) {
                         //离线失败之后进行后台数据盘查
                         HashMap<String, String> hashMap = new HashMap<>();
                         hashMap.put("hphm", carNumber);
@@ -422,11 +420,17 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                                 CheckInfoManager.DataBean data = infoManager.data;
 //                            请求核查成功之后显示核查的状态按钮
                                 //（PS:后台添加字段是否安检的状态，核查获取之后设定UI界面安检状态的信息）
-                                showButton("是否安检状态接口未加  待定", data);
+                                showButton("是否安检状态接口未加   待定", data);
                             }
                         });
-
+                    } else {
+                        List<KeyPerson> keyPeople = HcSdkManager.getInstance().checkPerson(String.valueOf(sfzIdBuilder));
+                        if (keyPeople != null) {
+                            KeyPerson keyPerson = keyPeople.get(0);
+                            ToastUtils.showShort("离线核查初始化成功" + keyPerson.getRwmc() + "\t" + keyPerson.getRylb());
+                        }
                     }
+
                 }
                 break;
             default:

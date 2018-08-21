@@ -113,6 +113,7 @@ public class CheckQueryActivity extends BaseActivity {
      * 获取数据  本地存储
      */
     private void getPersonData() {
+        listhestory.clear();
         //请求服务器接口数据   暂无接口
         HashMap<String, String> hashMap = new HashMap<>();
         long l = System.currentTimeMillis();
@@ -141,16 +142,17 @@ public class CheckQueryActivity extends BaseActivity {
      * 获取服务器数据
      */
     private void getServiceDate() {
+        listhestory.clear();
         //请求服务器接口数据   暂无接口
         HashMap<String, String> hashMap = new HashMap<>();
         long l = System.currentTimeMillis();
         //数据获取
         hashMap.put("startDate", DateTools.startToDate(String.valueOf(l)));
-        hashMap.put("userId", "110");
+        hashMap.put("userId", "110");//传输统一认证过的唯一识别ID   警号或者身份证
         hashMap.put("endDate", DateTools.endToDate(String.valueOf(l)));
 //        测试数据
-//        hashMap.put("startDate", "2017-04-26");
-//        hashMap.put("endDate", "2017-09-28");
+//        hashMap.put("startDate", "2018-08-11 17:31:12");
+//        hashMap.put("endDate", "2018-08-21 19:31:12");
         HttpInterfaces.checkhestory(HttpUrl.CheckHestory, hashMap, new StringDialogCallback(this, "数据获取中...") {
             @Override
             public void onSuccess(Response<String> response) {

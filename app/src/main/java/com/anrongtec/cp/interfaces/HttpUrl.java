@@ -6,8 +6,8 @@ package com.anrongtec.cp.interfaces;
 public class HttpUrl {
 
     public static String PORT = ":8080";
-    public static String IP_PORT = "192.168.1.17" + PORT;
-//    public static String IP_PORT = "192.168.1.199" + PORT;
+//    public static String IP_PORT = "192.168.1.17" + PORT;
+    public static String IP_PORT = "192.168.1.199" + PORT;
 
     public static String getUrl() {
         return "http://" + IP_PORT;
