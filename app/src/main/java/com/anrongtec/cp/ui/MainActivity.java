@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.anrongtec.cp.R;
 import com.anrongtec.cp.entity.Function;
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.iv_title_left)
     ImageView titleLeft;
     List<Function> functions;
-
+    private long firstTime = 0;
     private BaseQuickAdapter<Function, BaseViewHolder> mAdapter;
 
     @Override
@@ -145,6 +146,18 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        boolean b = onePopuwind(keyCode, event);
+        boolean b = twoToastMessage(keyCode, event);
+        return b;
+    }
+
+    /**
+     * 单击提示窗口结束程序
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    public boolean onePopuwind(int keyCode, KeyEvent event) {
         if ((keyCode == 4)) {
             DialogUtil.createTipDialog(this, "温馨提示", "是否退出核查核录", new DialogInterface.OnClickListener() {
                 @Override
@@ -156,5 +169,26 @@ public class MainActivity extends BaseActivity {
             return super.onKeyDown(keyCode, event);
         }
         return false;
+    }
+
+    /**
+     * 双击返回退出程序
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    public boolean twoToastMessage(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            long secondTime = System.currentTimeMillis();
+            if (secondTime - firstTime > 2000) {
+                Toast.makeText(MainActivity.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                firstTime = secondTime;
+                return true;
+            } else {
+                finish();
+//                System.exit(0);
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

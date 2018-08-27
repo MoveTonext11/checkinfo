@@ -329,6 +329,7 @@
         style="@style/button_submit"
         android:gravity="center"
         android:text="确定"
+        android:background="@drawable/ripple"
         android:textSize="@dimen/sp_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

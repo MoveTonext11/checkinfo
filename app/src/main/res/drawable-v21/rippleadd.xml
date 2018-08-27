@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#6bdccf"><!--点击效果背景-->
+
+    <!--正常状态下的背景-->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp"/>
+            <solid android:color="#777a7c" />
+        </shape>
+    </item>
+</ripple>

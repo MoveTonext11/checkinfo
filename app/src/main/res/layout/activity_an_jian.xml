@@ -166,14 +166,17 @@
                     android:id="@+id/btn_anjian_addPerCardInput"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dp_48"
+                    android:background="@drawable/rippleadd"
                     android:layout_alignParentEnd="true"
                     android:text="添加输入行" />
 
                 <Button
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/btn_anjian_delPerCardInput"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dp_48"
                     android:layout_alignParentEnd="true"
+                    android:background="@drawable/rippleadd"
                     android:text="删除输入行" />
 
             </LinearLayout>
@@ -252,6 +255,7 @@
         style="@style/button_submit"
         android:layout_width="0dp"
         android:text="快速安检"
+        android:background="@drawable/ripple"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

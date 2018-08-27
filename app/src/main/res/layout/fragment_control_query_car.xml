@@ -86,6 +86,7 @@
         <Button
             android:id="@+id/btn_submitSelect"
             style="@style/button_submit"
+            android:background="@drawable/ripple"
             android:layout_below="@id/tv_check_carPlateTypeValue"
             android:layout_margin="@dimen/dp_8"
             android:text="@string/btn_submitSelect" />

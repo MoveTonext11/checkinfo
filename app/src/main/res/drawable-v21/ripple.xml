@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#6bdccf"><!--点击效果背景-->
+    <!--按钮按住不放的背景-->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#a0f00000" />
+        </shape>
+    </item>
+    <!--正常状态下的背景-->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ff4289E4" />
+        </shape>
+    </item>
+</ripple>

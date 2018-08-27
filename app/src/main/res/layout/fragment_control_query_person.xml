@@ -78,6 +78,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <Button
+        android:background="@drawable/ripple"
         android:id="@+id/btn_submitSelect"
         style="@style/button_submit"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
