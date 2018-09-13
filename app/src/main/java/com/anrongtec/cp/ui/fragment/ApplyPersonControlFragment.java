@@ -147,6 +147,10 @@ public class ApplyPersonControlFragment extends BaseFragment implements View.OnC
             etApplyPersonLxrPhoneIn.setError("管辖民警电话不能为空");
             return false;
         }
+        if (TextUtils.isEmpty(etApplyPersonLkrIn.getText())) {
+            etApplyPersonLkrIn.setError("列控人不能为空");
+            return false;
+        }
 
         return true;
     }

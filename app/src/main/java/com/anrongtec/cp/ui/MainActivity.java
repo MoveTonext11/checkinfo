@@ -76,16 +76,14 @@ public class MainActivity extends BaseActivity {
      * 初始化RecyclerView
      */
     private void initRecyclerView() {
-
         initFunctionData();
         mRvFunction.setLayoutManager(new GridLayoutManager(this, 2));
-        mAdapter = new BaseQuickAdapter<Function, BaseViewHolder>(R.layout.item_rv_main_function,
-                functions) {
+        mAdapter = new BaseQuickAdapter<Function, BaseViewHolder>(R.layout.item_rv_main_function, functions) {
             @Override
             protected void convert(BaseViewHolder helper, Function item) {
                 helper.setText(R.id.tv_item_rv_main_function_name, item.getName());
-                helper.setImageDrawable(R.id.iv_item_rv_main_function_pic, ContextCompat
-                        .getDrawable(MainActivity.this, item.getIcon()));
+                helper.setImageDrawable(R.id.iv_item_rv_main_function_pic,
+                        ContextCompat.getDrawable(MainActivity.this, item.getIcon()));
             }
         };
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -108,7 +106,6 @@ public class MainActivity extends BaseActivity {
                         //统计分析
                         start(MainActivity.this, CountAnalyzeActivity.class);
                         break;
-
                     default:
                         break;
                 }

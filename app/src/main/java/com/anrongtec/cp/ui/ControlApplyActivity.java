@@ -61,8 +61,7 @@ public class ControlApplyActivity extends BaseActivity {
         applyPersonControlFragment = new ApplyPersonControlFragment(nfcHelper);
         applyCarControlFragment = new ApplyCarControlFragment(nfcHelper);
         fragments = new Fragment[]{applyPersonControlFragment, applyCarControlFragment};
-        viewPager.setAdapter(new NavigationViewPagerAdapter(getSupportFragmentManager(),
-                fragments, titles));
+        viewPager.setAdapter(new NavigationViewPagerAdapter(getSupportFragmentManager(), fragments, titles));
         viewPager.setCurrentItem(0);
         tabLayout.setupWithViewPager(viewPager);
     }

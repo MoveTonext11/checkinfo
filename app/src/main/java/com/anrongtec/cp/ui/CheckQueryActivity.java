@@ -110,7 +110,7 @@ public class CheckQueryActivity extends BaseActivity {
     }
 
     /**
-     * 获取数据  本地存储
+     * 获取数据
      */
     private void getPersonData() {
         listhestory.clear();

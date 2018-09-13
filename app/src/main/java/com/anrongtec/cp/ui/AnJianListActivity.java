@@ -190,12 +190,12 @@ public class AnJianListActivity extends BaseActivity implements BaseQuickAdapter
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-        if (mType == TYPE_THISPERSON) {
-            AnJianDetailsActivity.startPerson(this, mPersons.get(position));
-        } else if (mType == TYPE_PERSON_BID) {
-            AnJianDetailsActivity.startPersonBid(this, mPersonBids.get(position));
-        } else if (mType == TYPE_CAR_BID) {
-            AnJianDetailsActivity.startCarBid(this, mCarBids.get(position));
-        }
+//        if (mType == TYPE_THISPERSON) {
+//            AnJianDetailsActivity.startPerson(this, mPersons.get(position));
+//        } else if (mType == TYPE_PERSON_BID) {
+//            AnJianDetailsActivity.startPersonBid(this, mPersonBids.get(position));
+//        } else if (mType == TYPE_CAR_BID) {
+//            AnJianDetailsActivity.startCarBid(this, mCarBids.get(position));
+//        }
     }
 }

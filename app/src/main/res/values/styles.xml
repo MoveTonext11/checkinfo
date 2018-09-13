@@ -28,6 +28,11 @@
         <item name="android:paddingTop">4dp</item>
     </style>
 
+    <style name="AppTheme.NoBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
     <declare-styleable name="Keyboard">
         <attr name="xml" format="reference" />
     </declare-styleable>

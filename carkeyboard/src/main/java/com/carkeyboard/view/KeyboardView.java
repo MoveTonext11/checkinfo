@@ -185,8 +185,7 @@ public class KeyboardView extends LinearLayout {
             public void run() {
                 mEngine.start();
                 final int finalIndex = showIndex < 0 ? 0 : showIndex;
-                final KeyboardEntry keyboard =
-                        mEngine.update(mKeyboardType, finalIndex, number, numberType);
+                final KeyboardEntry keyboard = mEngine.update(mKeyboardType, finalIndex, number, numberType);
 //                final long escaped = TimeUnit.MILLISECONDS.convert((System.nanoTime() - start),
 //                        TimeUnit.NANOSECONDS);
 //                if (BuildConfig.DEBUG) {
@@ -247,7 +246,7 @@ public class KeyboardView extends LinearLayout {
                 KeyEntry key = keyEntryRow.get(i);
                 KeyView keyView = (KeyView) rowLayout.getChildAt(i);
                 keyView.bindKey(key);
-
+                // 键盘界面
                 if (key.keyType == KeyType.DELETE) {
                     keyView.setText("");
                 } else if (key.keyType == KeyType.OK) {
@@ -255,6 +254,7 @@ public class KeyboardView extends LinearLayout {
                     keyView.setText("关闭");
                     continue;
                 } else {
+                    //设置键盘文字
                     keyView.setText(key.text);
                 }
 

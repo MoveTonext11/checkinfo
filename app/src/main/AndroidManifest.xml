@@ -26,7 +26,8 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.StartActivity"
+            android:theme="@style/AppTheme.NoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,15 +65,8 @@
         <activity
             android:name=".ui.PersonCardJoinActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".utils.NFCCardActivity" />
-        <activity android:name="com.anrong.hebei.myapplication.Main2Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".ui.CheckQueryActivity"></activity>
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>

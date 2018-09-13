@@ -213,7 +213,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy(){
         super.onDestroy();
         nfcTask = null;
     }
@@ -271,8 +271,7 @@ public class AnJianActivity extends BaseActivity implements View.OnClickListener
                     public void onNumberTypeChanged(boolean isNewEnergyType) {
                         super.onNumberTypeChanged(isNewEnergyType);
                         if (isNewEnergyType) {
-                            lockType.setTextColor(getResources().getColor(android.R.color
-                                    .holo_green_light));
+                            lockType.setTextColor(getResources().getColor(android.R.color.holo_green_light));
                             tvCarNum.setText(getString(R.string.newCar_plate_number));
                         } else {
                             lockType.setTextColor(getResources().getColor(android.R.color
