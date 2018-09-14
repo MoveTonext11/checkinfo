@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 进度百分比文字大小 -->
+    <attr name="percent_text_sizes" format="dimension" />
+    <!-- 圆形进度条边框大小 -->
+    <attr name="stroke_widths" format="dimension" />
+    <!-- 矩形进度条 四周圆角大小 -->
+    <attr name="rect_rounds" format="dimension" />
+    <!-- 矩形进度条 是空心样式还是实心样式 -->
+    <attr name="isHorizonStrokes" format="boolean" />
+    <!-- 进度百分比文字颜色 -->
+    <attr name="percent_text_colors" format="color|integer" />
+    <!-- 进度条背景颜色 -->
+    <attr name="progressBarBgColors" format="color|integer" />
+    <!-- 扇形进度条颜色 -->
+    <attr name="sectorColors" format="color|integer" />
+    <!-- 扇形背景颜色 -->
+    <attr name="unSweepColors" format="color|integer" />
+    <!-- 进度颜色 -->
+    <attr name="progressColors" format="color|integer" />
+    <!-- 进度文字是否显示百分号 -->
+    <attr name="showPercentSigns" format="boolean" />
+    <!-- 进度条样式圆形还是矩形 -->
+    <attr name="orientations">
+        <enum name="horizontal" value="0" />
+        <enum name="circle" value="1" />
+        <enum name="sector" value="2" />
+    </attr>
+
+    <declare-styleable name="cbprogressbar">
+        <attr name="percent_text_sizes" />
+        <attr name="isHorizonStrokes" />
+        <attr name="percent_text_colors" />
+        <attr name="progressBarBgColors" />
+        <attr name="progressColors" />
+        <attr name="sectorColors" />
+        <attr name="unSweepColors" />
+        <attr name="orientations" />
+        <attr name="stroke_widths" />
+        <attr name="rect_rounds" />
+        <attr name="showPercentSigns" />
+    </declare-styleable>
+
+
+    <!-- 自定义 GIF图片 -->
+    <declare-styleable name="gifView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference" />
+    </declare-styleable>
+
+    <style name="Widget_GifView"></style>
+
+    <declare-styleable name="CarrouselLayout">
+
+        <attr name="autoRotation" format="boolean" />
+        <attr name="rotationTime" format="integer" />
+        <attr name="r" format="dimension" />
+
+        <attr name="rotateDirection">
+            <enum name="clockwise" value="0" />
+            <enum name="anticlockwise" value="1" />
+        </attr>
+
+    </declare-styleable>
+
+    <!--筛选框自定义属性 by wangye-->
+    <declare-styleable name="DropDownMenu">
+
+        <attr name="ddunderlineColor" format="color"/>
+        <attr name="dddividerColor" format="color"/>
+        <attr name="ddtextSelectedColor" format="color"/>
+        <attr name="ddtextUnselectedColor" format="color"/>
+        <attr name="ddmenuBackgroundColor" format="color"/>
+        <attr name="ddmaskColor" format="color"/>
+        <attr name="ddmenuTextSize" format="dimension"/>
+        <attr name="ddmenuSelectedIcon" format="reference"/>
+        <attr name="ddmenuUnselectedIcon" format="reference"/>
+        <attr name="ddmenuMenuHeightPercent" format="float"/>
+    </declare-styleable>
+</resources>
