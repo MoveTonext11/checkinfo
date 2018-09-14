@@ -51,8 +51,8 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 startActivity(new Intent(StartActivity.this, MainActivity.class));
-                overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
                 finish();
+                overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
             }
 
             @Override

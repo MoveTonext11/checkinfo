@@ -25,7 +25,5 @@
             android:text=""
             android:textColor="@color/white"
             android:textSize="16sp" />
-
-
     </android.support.v7.widget.CardView>
 </LinearLayout>

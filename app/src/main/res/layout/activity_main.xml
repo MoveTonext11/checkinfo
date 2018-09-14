@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.anrongtec.cp.ui.MainActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/rv_main_function"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,6 +16,85 @@
         app:layout_constraintRight_toRightOf="parent"
         >
 
-    </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>-->
+    <com.anrongtec.cp.xuan.CarrouselLayout
+        android:id="@+id/carrousel"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:gravity="center">
+        <!--快速安检-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/image_xxjs"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_icon_main_anjian" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_xxjs"
+                android:layout_centerHorizontal="true"
+                android:text="@string/main_function_anjian" />
+        </RelativeLayout>
+        <!--紧急列控-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_xxjj"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_icon_main_control" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_xxjj"
+                android:layout_centerHorizontal="true"
+                android:text="@string/main_function_control" />
+        </RelativeLayout>
+        <!--核查记录-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_xxts"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_icon_main_record" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_xxts"
+                android:layout_centerHorizontal="true"
+                android:text="@string/main_function_check_record" />
+        </RelativeLayout>
+        <!--统计分析-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_xxtj"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/ic_icon_main_tongji" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_xxtj"
+                android:layout_centerHorizontal="true"
+                android:text="@string/main_function_count_analyze" />
+        </RelativeLayout>
+    </com.anrongtec.cp.xuan.CarrouselLayout>
+</RelativeLayout>

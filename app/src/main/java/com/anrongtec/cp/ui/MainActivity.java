@@ -2,18 +2,16 @@ package com.anrongtec.cp.ui;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.anrongtec.cp.R;
 import com.anrongtec.cp.entity.Function;
 import com.anrongtec.cp.utils.DialogUtil;
 import com.anrongtec.cp.utils.ObtainInfo;
+import com.anrongtec.cp.xuan.CarrouselLayout;
+import com.anrongtec.cp.xuan.OnCarrouselItemClickListener;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -21,7 +19,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import zhtsample.zht.com.offlinecheck.HcSdkInitCallback;
 import zhtsample.zht.com.offlinecheck.HcSdkManager;
@@ -30,13 +27,14 @@ import zhtsample.zht.com.offlinecheck.HcSdkManager;
  * 主页面
  */
 public class MainActivity extends BaseActivity {
-    @BindView(R.id.rv_main_function)
-    RecyclerView mRvFunction;
-    @BindView(R.id.iv_title_left)
-    ImageView titleLeft;
+//    @BindView(R.id.rv_main_function)
+//    RecyclerView mRvFunction;
+//    @BindView(R.id.iv_title_left)
+//    ImageView titleLeft;
     List<Function> functions;
     private long firstTime = 0;
     private BaseQuickAdapter<Function, BaseViewHolder> mAdapter;
+    private CarrouselLayout carrousel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,52 +65,89 @@ public class MainActivity extends BaseActivity {
      * 初始化控件
      */
     private void initView() {
-        titleLeft.setVisibility(View.VISIBLE);
+//        titleLeft.setVisibility(View.VISIBLE);
         setTitle(getString(R.string.title_activity_mainIndex));
-        initRecyclerView();
+//        initRecyclerView();
+        initrotat();
     }
 
     /**
-     * 初始化RecyclerView
+     * 初始化旋转
      */
-    private void initRecyclerView() {
-        initFunctionData();
-        mRvFunction.setLayoutManager(new GridLayoutManager(this, 2));
-        mAdapter = new BaseQuickAdapter<Function, BaseViewHolder>(R.layout.item_rv_main_function, functions) {
+    private void initrotat() {
+        carrousel = (CarrouselLayout)findViewById(R.id.carrousel);
+        //设置旋转方向
+//        carrouselLayout.setRotationZ(120);
+        carrousel.setR(400);
+        carrousel.setRotationX(-25);
+        carrousel.setOnCarrouselItemClickListener(new OnCarrouselItemClickListener() {
             @Override
-            protected void convert(BaseViewHolder helper, Function item) {
-                helper.setText(R.id.tv_item_rv_main_function_name, item.getName());
-                helper.setImageDrawable(R.id.iv_item_rv_main_function_pic,
-                        ContextCompat.getDrawable(MainActivity.this, item.getIcon()));
-            }
-        };
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onItemClick(View view, int position) {
                 switch (position) {
                     case 0:
-                        //快速安检
-                        start(MainActivity.this, AnJianActivity.class);
-                        break;
-                    case 1:
-                        //紧急列控
-                        start(MainActivity.this, ControlNavigationActivity.class);
-                        break;
-                    case 2:
                         //核查记录
                         start(MainActivity.this, CheckQueryActivity.class);
                         break;
-                    case 3:
+                    case 1:
                         //统计分析
                         start(MainActivity.this, CountAnalyzeActivity.class);
+                        break;
+                    case 2:
+                        //紧急列控
+                        start(MainActivity.this, ControlNavigationActivity.class);
+                        break;
+                    case 3:
+                        //快速安检
+                        start(MainActivity.this, AnJianActivity.class);
                         break;
                     default:
                         break;
                 }
             }
         });
-        mRvFunction.setAdapter(mAdapter);
     }
+
+    /**
+     * 初始化RecyclerView
+     */
+//    private void initRecyclerView() {
+//        initFunctionData();
+//        mRvFunction.setLayoutManager(new GridLayoutManager(this, 2));
+//        mAdapter = new BaseQuickAdapter<Function, BaseViewHolder>(R.layout.item_rv_main_function, functions) {
+//            @Override
+//            protected void convert(BaseViewHolder helper, Function item) {
+//                helper.setText(R.id.tv_item_rv_main_function_name, item.getName());
+//                helper.setImageDrawable(R.id.iv_item_rv_main_function_pic,
+//                        ContextCompat.getDrawable(MainActivity.this, item.getIcon()));
+//            }
+//        };
+//        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                switch (position) {
+//                    case 0:
+//                        //快速安检
+//                        start(MainActivity.this, AnJianActivity.class);
+//                        break;
+//                    case 1:
+//                        //紧急列控
+//                        start(MainActivity.this, ControlNavigationActivity.class);
+//                        break;
+//                    case 2:
+//                        //核查记录
+//                        start(MainActivity.this, CheckQueryActivity.class);
+//                        break;
+//                    case 3:
+//                        //统计分析
+//                        start(MainActivity.this, CountAnalyzeActivity.class);
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//        });
+//        mRvFunction.setAdapter(mAdapter);
+//    }
 
     /**
      * 初始化模块信息
